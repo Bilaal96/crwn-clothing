@@ -19,9 +19,33 @@
         justify-content: flex-end;
 
         .option {
-            padding: 10px 15px;
+            position: relative;
+            padding: 10px 15px 5px;
+            margin-left: 10px;
             font-size: 1.2rem;
             font-weight: bold;
+
+            &:before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                height: 2px;
+                width: 100%;
+                background-color: black;
+                visibility: hidden;
+                transform: scaleX(0);
+                transition: all 0.3s ease-in-out 0s;
+            }
+
+            &:hover {
+                color: black;            
+                
+                &:before {
+                    visibility: visible;
+                    transform: scale(1);
+                }
+            }
         }
     }
 }
