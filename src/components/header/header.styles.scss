@@ -24,9 +24,10 @@
             margin-left: 10px;
             font-size: 1.2rem;
             font-weight: bold;
+            cursor: pointer;
 
             &:before {
-                content: "";
+                content: '';
                 position: absolute;
                 bottom: 0;
                 left: 0;
@@ -39,8 +40,8 @@
             }
 
             &:hover {
-                color: black;            
-                
+                color: black;
+
                 &:before {
                     visibility: visible;
                     transform: scale(1);
