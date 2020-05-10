@@ -14,6 +14,41 @@ const config = {
     measurementId: 'G-CY3LTF3DQQ',
 };
 
+// Store data in Firestore DB
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+    // Guard clause for null user object
+    if (!userAuth) return;
+
+    // documentReference Object --> Result of DB Query
+    const userRef = firestore.doc(`users/${userAuth.uid}`);
+
+    // Async-ly get documentSnapshot object from documentReference
+    const userSnapshot = await userRef.get();
+
+    // if user does not exist, create userSnapshot data
+    // Check prevents duplicate users
+    if (!userSnapshot.exists) {
+        // Gather data we want to store
+        const { displayName, email } = userAuth;
+        const createdAt = new Date();
+
+        // Async Request to store data in Firestore
+        try {
+            // Create data via userRef.set() passing in gathered data, as well as additionalData param
+            await userRef.set({
+                displayName,
+                email,
+                createdAt,
+                ...additionalData,
+            });
+        } catch (error) {
+            console.log('error creating user:', error.message);
+        }
+    }
+
+    return userRef;
+};
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();

@@ -3,7 +3,7 @@ $main-color: black;
 
 @mixin shrinkLabel {
     top: -14px;
-    font-size: 14px;
+    font-size: 12px;
     color: $main-color;
 }
 
@@ -47,7 +47,7 @@ $main-color: black;
         pointer-events: none;
         transition: all 0.3s ease;
 
-        & .shrink {
+        &.shrink {
             @include shrinkLabel();
         }
     }

@@ -15,7 +15,7 @@ const Header = ({ currentUser }) => (
         </Link>
 
         <div className="options">
-            <Link className="option" to="/shop">
+            <Link className="option selected" to="/shop">
                 SHOP
             </Link>
             <Link className="option" to="/contact">

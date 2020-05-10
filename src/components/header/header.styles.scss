@@ -20,11 +20,17 @@
 
         .option {
             position: relative;
-            padding: 10px 15px 5px;
+            padding: 10px 15px;
             margin-left: 10px;
             font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
+
+            &.selected {
+                border-radius: 3px;
+                background-color: #ccc;
+                transition: background-color 0.2s ease-in-out;
+            }
 
             &:before {
                 content: '';
@@ -41,6 +47,7 @@
 
             &:hover {
                 color: black;
+                background-color: white;
 
                 &:before {
                     visibility: visible;
