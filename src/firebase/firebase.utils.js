@@ -14,12 +14,12 @@ const config = {
     measurementId: 'G-CY3LTF3DQQ',
 };
 
-// Store data in Firestore DB
+// Store user in Firestore DB
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     // Guard clause for null user object
     if (!userAuth) return;
 
-    // documentReference Object --> Result of DB Query
+    // Query Firestore DB for documentReference Object of specified user
     const userRef = firestore.doc(`users/${userAuth.uid}`);
 
     // Async-ly get documentSnapshot object from documentReference
@@ -54,6 +54,7 @@ firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
+// Config Sign-in with Google Feature
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
 export const signInWithGoogle = () => auth.signInWithPopup(provider);

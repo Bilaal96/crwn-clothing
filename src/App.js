@@ -22,6 +22,7 @@ class App extends React.Component {
 
     componentDidMount() {
         // authenticate user on signin
+        // userAuth === user STATE in auth library of Firebase
         this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
             // if user exists, i.e. userAuth is not null
             if (userAuth) {
@@ -38,10 +39,10 @@ class App extends React.Component {
                         () => console.log(this.state)
                     );
                 });
+            } else {
+                // if userAuth is NULL
+                this.setState({ currentUser: userAuth });
             }
-
-            // if userAuth is NULL
-            this.setState({ currentUser: userAuth });
         });
     }
 
