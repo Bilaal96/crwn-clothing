@@ -16,6 +16,8 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
         );
     }
 
-    // If the cartItemToAdd does not already exist in cartItems, create the cartItem with a base quantity of 1
+    // If the cartItemToAdd does not already exist in cartItems,
+    // create the cartItem with a base quantity of 1
+    // returning the cartItems in a new array
     return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
 };

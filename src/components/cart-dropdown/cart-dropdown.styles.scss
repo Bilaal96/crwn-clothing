@@ -15,7 +15,16 @@
         height: 240px;
         display: flex;
         flex-direction: column;
-        overflow: scroll;
+        overflow: auto;
+        font-weight: bold;
+    }
+
+    .cart-empty {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
     }
 
     button {
