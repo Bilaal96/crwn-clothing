@@ -7,6 +7,11 @@
     align-items: center;
     cursor: pointer;
     margin-left: 10px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: scale(1.15);
+    }
 
     .shopping-icon {
         width: 36px;
