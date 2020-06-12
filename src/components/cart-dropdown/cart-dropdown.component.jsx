@@ -23,11 +23,6 @@ const CartDropdown = ({ cartItems }) => (
     </div>
 );
 
-//! FIXME - REMOVE AFTER TESTED
-// const mapStateToProps = ({ cart: { cartItems } }) => ({
-//     cartItems,
-// });
-
 const mapStateToProps = (state) => ({
     cartItems: selectCartItems(state),
 });
