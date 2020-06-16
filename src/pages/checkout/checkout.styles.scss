@@ -15,10 +15,10 @@
 
         .header-block {
             text-transform: capitalize;
-            width: 23%;
+            width: 22%;
 
             &:last-child {
-                width: 8%;
+                width: 12%;
             }
         }
     }
@@ -27,5 +27,11 @@
         margin-top: 30px;
         margin-left: auto;
         font-size: 36px;
+    }
+
+    .checkout-empty {
+        font-size: 24px;
+        margin-top: 30px;
+        letter-spacing: 2px;
     }
 }

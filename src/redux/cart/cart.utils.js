@@ -21,3 +21,28 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
     // returning the cartItems in a new array
     return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
 };
+
+export const removeItemFromCart = (cartItems, cartItemToRemove) => {
+    // Check if item that we want to remove exists
+    // --> similar to utility: addItemToCart()
+    const existingCartItem = cartItems.find(
+        (cartItem) => cartItem.id === cartItemToRemove.id
+    );
+
+    // Clear the item if it's quantity property equals 1
+    // --> similar to clearItemFromCart Action
+    if (existingCartItem.quantity === 1) {
+        return cartItems.filter(
+            (cartItem) => cartItem.id !== cartItemToRemove.id
+        );
+    }
+
+    // Reduce quantity property of item by 1 if quantity > 1
+    // Otherwise return cartItem as is
+    // --> similar to utility: addItemToCart()
+    return cartItems.map((cartItem) =>
+        cartItem.id === cartItemToRemove.id
+            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+            : cartItem
+    );
+};
