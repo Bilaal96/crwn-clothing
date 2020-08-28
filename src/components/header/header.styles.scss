@@ -9,6 +9,14 @@
         height: 100%;
         width: 70px;
         padding: 20px;
+
+        .logo {
+            transition: all 0.3s;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
     }
 
     .options {
@@ -25,33 +33,110 @@
             font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
+            color: rgb(95, 95, 95);
+            opacity: 0.7;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.4s;
+            z-index: 1;
 
-            &.selected {
+            // Set background-gradient on .options:before, hidden by default with "opacity: 0"
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: linear-gradient(#fff, #f6f6f6);
                 border-radius: 3px;
-                background-color: #ccc;
-                transition: background-color 0.2s ease-in-out;
+                z-index: -1;
+                opacity: 0;
+                transform: scale(0);
+                transform-origin: bottom;
+                transition: all 0.3s ease;
             }
 
-            &:before {
+            // Pseudo-border on header option
+            // hidden by default, visibility property is transitioned on hover event
+            &:after {
                 content: '';
                 position: absolute;
                 bottom: 0;
                 left: 0;
                 height: 2px;
                 width: 100%;
-                background-color: black;
+                background-color: rgb(95, 95, 95);
                 visibility: hidden;
                 transform: scaleX(0);
                 transition: all 0.3s ease-in-out 0s;
             }
 
+            // On hover of header option
             &:hover {
-                color: black;
-                background-color: white;
-
-                &:before {
-                    visibility: visible;
+                // Transition opacity of background-gradient so it is visible
+                &::before {
+                    opacity: 1;
                     transform: scale(1);
+                }
+
+                // Transition pseudo-border, so it is visible with growing animation
+                &::after {
+                    visibility: visible;
+                    transform: scaleX(1);
+                }
+
+                // Unique styles for .option.sign-in-link
+                &.sign-in-link {
+                    color: rgb(107, 180, 107);
+
+                    &::after {
+                        background-color: rgb(107, 180, 107);
+                    }
+                }
+
+                // Unique styles for .option.sign-out-link
+                &.sign-out-link {
+                    color: rgb(236, 114, 114);
+
+                    &::after {
+                        background-color: rgb(236, 114, 114);
+                    }
+                }
+            }
+
+            // Currently selected header option
+            &.selected {
+                // color: rgb(95, 95, 95);
+                opacity: 1;
+
+                // Set background image of selected header option to a gradient
+                &::before {
+                    // ... inherits styles from .options::before (above)
+                    background: linear-gradient(#fff, rgb(228, 227, 227));
+                    opacity: 0.6;
+                    transform: scale(1);
+                }
+
+                // Make pseudo-border visible for selected header option
+                &::after {
+                    // ... inherits styles from .options::after (above)
+                    // background-color: rgb(95, 95, 95);
+                    visibility: visible;
+                    transform: scaleX(1);
+                }
+
+                // On hover of currently selected header option
+                &:hover {
+                    opacity: 0.7;
+
+                    &::before {
+                        opacity: 1;
+                    }
+
+                    &::after {
+                        opacity: 0.7;
+                    }
                 }
             }
         }

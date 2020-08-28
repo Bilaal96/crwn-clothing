@@ -1,5 +1,9 @@
 import React from 'react';
+
+// Hard-coded Test Data
 import SHOP_DATA from './shop.data.js';
+
+// Components
 import CollectionPreview from '../../components/collection-preview/collection-preview.component.jsx';
 
 class ShopPage extends React.Component {

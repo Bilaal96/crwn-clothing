@@ -1,5 +1,5 @@
 .checkout-page {
-    width: 55%;
+    width: 54%;
     min-height: 90vh;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,14 @@
             width: 22%;
 
             &:last-child {
+                display: flex;
+                justify-content: center;
                 width: 12%;
+            }
+
+            .header-title {
+                font-weight: bold;
+                letter-spacing: 0.1rem;
             }
         }
     }

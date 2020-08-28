@@ -1,9 +1,11 @@
 import React from 'react';
 
+// Components
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-// Imported because we're creating & authenticating new users
+// Firebase Utils
+// -- Imported because we're creating & authenticating new users
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 
 import './sign-up.styles.scss';

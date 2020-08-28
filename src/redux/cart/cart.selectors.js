@@ -1,12 +1,13 @@
+// --- Memoized Cart Selectors ----
 import { createSelector } from 'reselect';
 
-// Input Selector
+// Input Selector => returns SLICE of state
 const selectCart = (state) => state.cart;
 
 // Output Selectors
 export const selectCartItems = createSelector(
-    [selectCart],
-    (cart) => cart.cartItems
+    [selectCart], // array of input selectors
+    (cart) => cart.cartItems // returns desired state value from the input selector
 );
 
 export const selectCartItemsCount = createSelector(

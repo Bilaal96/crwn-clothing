@@ -24,7 +24,7 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 
 export const removeItemFromCart = (cartItems, cartItemToRemove) => {
     // Check if item that we want to remove exists
-    // --> similar to utility: addItemToCart()
+    // --> inverse of utility: addItemToCart()
     const existingCartItem = cartItems.find(
         (cartItem) => cartItem.id === cartItemToRemove.id
     );
@@ -39,7 +39,7 @@ export const removeItemFromCart = (cartItems, cartItemToRemove) => {
 
     // Reduce quantity property of item by 1 if quantity > 1
     // Otherwise return cartItem as is
-    // --> similar to utility: addItemToCart()
+    // --> inverse of utility: addItemToCart()
     return cartItems.map((cartItem) =>
         cartItem.id === cartItemToRemove.id
             ? { ...cartItem, quantity: cartItem.quantity - 1 }

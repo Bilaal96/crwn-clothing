@@ -1,41 +1,67 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { auth } from '../../firebase/firebase.utils';
+// Actions
+import { toggleCartHidden } from '../../redux/cart/cart.actions';
+// Selectors
+import { selectCurrentUser } from '../../redux/user/user.selectors';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
 
+// Components
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
-import { selectCurrentUser } from '../../redux/user/user.selectors';
-import { selectCartHidden } from '../../redux/cart/cart.selectors';
+// Firebase Utils
+import { auth } from '../../firebase/firebase.utils';
 
 import './header.styles.scss';
 
-const Header = ({ currentUser, hidden }) => (
+const Header = ({ currentUser, hidden, dispatch }) => (
     <div className="header">
-        <Link className="logo-container" to="/">
-            <Logo className="logo" />
-        </Link>
+        <NavLink className="logo-container" to="/">
+            <Logo className="logo" title="logo" />
+        </NavLink>
 
         <div className="options">
-            <Link className="option selected" to="/shop">
+            <NavLink exact className="option" activeClassName="selected" to="/">
+                HOME
+            </NavLink>
+            <NavLink className="option" activeClassName="selected" to="/shop">
                 SHOP
-            </Link>
-            <Link className="option" to="/contact">
+            </NavLink>
+            <NavLink
+                className="option"
+                activeClassName="selected"
+                to="/contact"
+            >
                 CONTACT
-            </Link>
+            </NavLink>
+
             {currentUser ? (
-                <div className="option" onClick={() => auth.signOut()}>
+                <div
+                    className="option sign-out-link"
+                    onClick={() => {
+                        auth.signOut();
+                        if (hidden === false) {
+                            dispatch(toggleCartHidden());
+                        }
+                    }}
+                >
                     SIGN OUT
                 </div>
             ) : (
-                <Link className="option" to="/signin">
+                <NavLink
+                    className="option sign-in-link"
+                    activeClassName="selected"
+                    to="/signin"
+                >
                     SIGN IN
-                </Link>
+                </NavLink>
             )}
+
             {currentUser && <CartIcon />}
         </div>
         {hidden ? null : <CartDropdown />}

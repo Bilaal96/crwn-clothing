@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+// Actions
 import {
     addItem,
     removeItem,
@@ -30,8 +31,13 @@ const CheckoutItem = ({ cartItem, addItem, removeItem, clearItem }) => {
             </span>
             <span className="price">${price}</span>
 
-            <div className="remove-button" onClick={() => clearItem(cartItem)}>
-                &#10005;
+            <div className="remove-button-container">
+                <div
+                    className="remove-button"
+                    onClick={() => clearItem(cartItem)}
+                >
+                    <span className="remove-icon">&#10005;</span>
+                </div>
             </div>
         </div>
     );

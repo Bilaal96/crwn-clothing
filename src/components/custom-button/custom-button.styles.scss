@@ -10,11 +10,13 @@
     color: white;
     text-transform: uppercase;
     font-family: 'Open Sans Condensed';
-    font-weight: bolder;
-    border: none;
+    font-weight: bold;
+    border: 1px solid transparent;
+    border-radius: 4px;
     cursor: pointer;
     display: flex;
     justify-content: center;
+    transition: all 0.2s;
 
     &:hover {
         background-color: white;
@@ -27,8 +29,9 @@
         color: white;
 
         &:hover {
-            background-color: #357ae8;
-            border: none;
+            background-color: white;
+            color: #357ae8;
+            border: 1px solid #357ae8;
         }
     }
 
@@ -40,7 +43,7 @@
         &:hover {
             background-color: black;
             color: white;
-            border: none;
+            border: 1px solid transparent;
         }
     }
 }
