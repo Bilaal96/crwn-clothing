@@ -107,7 +107,6 @@
 
             // Currently selected header option
             &.selected {
-                // color: rgb(95, 95, 95);
                 opacity: 1;
 
                 // Set background image of selected header option to a gradient
@@ -124,6 +123,15 @@
                     // background-color: rgb(95, 95, 95);
                     visibility: visible;
                     transform: scaleX(1);
+                }
+
+                // Unique styles for .selected.sign-in-link
+                &.sign-in-link {
+                    color: rgb(107, 180, 107);
+
+                    &::after {
+                        background-color: rgb(107, 180, 107);
+                    }
                 }
 
                 // On hover of currently selected header option
