@@ -63,8 +63,8 @@ const SHOP_DATA = [
     },
     {
         id: 2,
-        title: 'Sneakers',
-        routeName: 'sneakers',
+        title: 'Footwear',
+        routeName: 'footwear',
         items: [
             {
                 id: 10,
