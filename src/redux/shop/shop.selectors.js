@@ -5,20 +5,20 @@ import memoize from 'lodash.memoize';
 const selectShop = (state) => state.shop;
 
 // Output Selector
-export const selectShopCollections = createSelector(
+export const selectAllCollections = createSelector(
     [selectShop],
     (shop) => shop.collections
 );
 
 export const selectCollectionsForPreview = createSelector(
-    [selectShopCollections],
+    [selectAllCollections],
     (collections) => Object.keys(collections).map((key) => collections[key])
 );
 
-// NOTE: selectShopCollection is a Curried Selector Function
-export const selectShopCollection = memoize((collectionUrlParam) =>
+// NOTE: selectSingleCollection is a Curried Selector Function
+export const selectSingleCollection = memoize((collectionUrlParam) =>
     createSelector(
-        [selectShopCollections],
+        [selectAllCollections],
         (collections) => collections[collectionUrlParam]
     )
 );
