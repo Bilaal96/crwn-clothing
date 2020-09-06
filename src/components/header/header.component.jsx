@@ -62,7 +62,7 @@ const Header = ({ currentUser, hidden, dispatch }) => (
                 </NavLink>
             )}
 
-            {currentUser && <CartIcon />}
+            <CartIcon />
         </div>
         {hidden ? null : <CartDropdown />}
     </div>
