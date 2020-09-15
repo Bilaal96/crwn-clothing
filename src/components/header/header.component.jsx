@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -17,32 +17,51 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 // Firebase Utils
 import { auth } from '../../firebase/firebase.utils';
 
-import './header.styles.scss';
+// Styled Components
+import {
+    HeaderContainer,
+    LogoContainer,
+    OptionsContainer,
+    OptionLink,
+} from './header.styles';
+
+// import './header.styles.scss';
 
 const Header = ({ currentUser, hidden, dispatch }) => (
-    <div className="header">
-        <NavLink className="logo-container" to="/">
+    <HeaderContainer>
+        <LogoContainer className="logo-container" to="/">
             <Logo className="logo" title="logo" />
-        </NavLink>
+        </LogoContainer>
 
-        <div className="options">
-            <NavLink exact className="option" activeClassName="selected" to="/">
+        <OptionsContainer>
+            {/* OptionLink rendered as NavLink by Default */}
+            <OptionLink
+                exact
+                className="option"
+                activeClassName="selected"
+                to="/"
+            >
                 HOME
-            </NavLink>
-            <NavLink className="option" activeClassName="selected" to="/shop">
+            </OptionLink>
+            <OptionLink
+                className="option"
+                activeClassName="selected"
+                to="/shop"
+            >
                 SHOP
-            </NavLink>
-            <NavLink
+            </OptionLink>
+            <OptionLink
                 className="option"
                 activeClassName="selected"
                 to="/contact"
             >
                 CONTACT
-            </NavLink>
+            </OptionLink>
 
             {currentUser ? (
-                <div
+                <OptionLink
                     className="option sign-out-link"
+                    as="div" // render OptionLink as div
                     onClick={() => {
                         auth.signOut();
                         if (hidden === false) {
@@ -51,21 +70,21 @@ const Header = ({ currentUser, hidden, dispatch }) => (
                     }}
                 >
                     SIGN OUT
-                </div>
+                </OptionLink>
             ) : (
-                <NavLink
+                <OptionLink
                     className="option sign-in-link"
                     activeClassName="selected"
                     to="/signin"
                 >
                     SIGN IN
-                </NavLink>
+                </OptionLink>
             )}
 
             <CartIcon />
-        </div>
+        </OptionsContainer>
         {hidden ? null : <CartDropdown />}
-    </div>
+    </HeaderContainer>
 );
 
 const mapStateToProps = createStructuredSelector({

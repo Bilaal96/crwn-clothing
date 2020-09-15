@@ -17,7 +17,7 @@
     }
 
     // style CustomButton in CollectionItem
-    .custom-button {
+    button {
         width: 80%;
         position: absolute;
         bottom: 50px;
@@ -34,7 +34,7 @@
             margin-bottom: 15px;
         }
 
-        .custom-button {
+        button {
             opacity: 0.85;
             display: flex;
         }

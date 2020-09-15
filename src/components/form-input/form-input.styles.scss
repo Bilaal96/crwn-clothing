@@ -1,5 +1,5 @@
 $sub-color: grey;
-$main-color: black;
+$main-color: rgb(49, 146, 202);
 
 @mixin shrinkLabel {
     top: -14px;
@@ -26,6 +26,7 @@ $main-color: black;
 
         &:focus {
             outline: none;
+            border-bottom: 1px solid $main-color;
         }
 
         &:focus ~ .form-input-label {
