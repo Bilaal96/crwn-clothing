@@ -3,9 +3,21 @@
     flex-direction: column;
     margin-bottom: 30px;
 
-    .title {
+    .collection-preview-title {
         font-size: 28px;
         margin-bottom: 25px;
+
+        & .collection-link {
+            cursor: pointer;
+            transition: opacity 0.2s;
+
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+        & .collection-name {
+            color: rgb(49, 146, 202);
+        }
     }
 
     .preview {
