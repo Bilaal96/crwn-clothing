@@ -1,4 +1,4 @@
-import { takeEvery, call, put } from 'redux-saga/effects';
+import { takeLatest, call, put } from 'redux-saga/effects';
 
 // Firebase Utils
 import {
@@ -51,7 +51,7 @@ export function* fetchCollectionsStart() {
         'sagaMiddleware ran fetchCollectionsStart() Saga --> now listening for FETCH_COLLECTIONS_START Action'
     );
 
-    yield takeEvery(
+    yield takeLatest(
         ShopActionTypes.FETCH_COLLECTIONS_START,
         fetchCollectionsAsync
     );
