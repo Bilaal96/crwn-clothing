@@ -24,3 +24,15 @@ export const selectSingleCollection = memoize((collectionUrlParam) =>
         collections ? collections[collectionUrlParam] : null
     )
 );
+
+// Get isFetching state-value
+export const selectIsCollectionsFetching = createSelector(
+    [selectShop],
+    (shop) => shop.isFetching
+);
+
+// Determine true/false value for => whether "collections" collection has been fetched from Firestore
+export const selectIsCollectionsLoaded = createSelector(
+    [selectShop],
+    (shop) => !!shop.collections
+);

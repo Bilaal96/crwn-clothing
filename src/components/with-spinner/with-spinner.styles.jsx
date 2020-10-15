@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 // Overlay ensures that spinner is always centered
 export const SpinnerOverlay = styled.div`
-    height: 60vh;
+    height: 70vh;
     width: 100%;
     display: flex;
     justify-content: center;
