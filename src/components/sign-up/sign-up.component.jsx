@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+// Actions
+import { signUpStart } from '../../redux/user/user.actions';
 
 // Components
 import FormInput from '../form-input/form-input.component';
@@ -40,23 +44,26 @@ class SignUp extends React.Component {
             return;
         }
 
-        try {
-            const { user } = await auth.createUserWithEmailAndPassword(
-                email,
-                password
-            );
+        const { signUpStart } = this.props;
+        signUpStart({ displayName, email, password });
 
-            await createUserProfileDocument(user, { displayName });
+        // try {
+        //     const { user } = await auth.createUserWithEmailAndPassword(
+        //         email,
+        //         password
+        //     );
 
-            this.setState({
-                displayName: '',
-                email: '',
-                password: '',
-                confirmPassword: '',
-            });
-        } catch (error) {
-            console.error(error);
-        }
+        //     await createUserProfileDocument(user, { displayName });
+
+        //     this.setState({
+        //         displayName: '',
+        //         email: '',
+        //         password: '',
+        //         confirmPassword: '',
+        //     });
+        // } catch (error) {
+        //     console.error(error);
+        // }
     };
 
     render() {
@@ -112,4 +119,9 @@ class SignUp extends React.Component {
     }
 }
 
-export default SignUp;
+const mapDispatchToProps = (dispatch) => ({
+    signUpStart: (newUserCredentials) =>
+        dispatch(signUpStart(newUserCredentials)),
+});
+
+export default connect(null, mapDispatchToProps)(SignUp);

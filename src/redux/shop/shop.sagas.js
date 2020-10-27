@@ -1,4 +1,4 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { takeLatest, call, put, all } from 'redux-saga/effects';
 
 // Firebase Utils
 import {
@@ -15,6 +15,8 @@ import {
 // Shop Action-Types
 import { ShopActionTypes } from './shop.types';
 
+// Saga-based Tasks
+// -- Handle Async Request for Fetching Collections from Firestore
 export function* fetchCollectionsAsync() {
     console.log(
         'fetchCollectionsStart() Action was triggered, execute logic inside fetchCollectionsAsync() Saga'
@@ -46,6 +48,8 @@ export function* fetchCollectionsAsync() {
     }
 }
 
+// Main Sagas
+// -- initiate Fetch for Collections from Firestore
 export function* fetchCollectionsStart() {
     console.log(
         'sagaMiddleware ran fetchCollectionsStart() Saga --> now listening for FETCH_COLLECTIONS_START Action'
@@ -55,4 +59,9 @@ export function* fetchCollectionsStart() {
         ShopActionTypes.FETCH_COLLECTIONS_START,
         fetchCollectionsAsync
     );
+}
+
+// Root
+export function* shopSagas() {
+    yield all([call(fetchCollectionsStart)]);
 }

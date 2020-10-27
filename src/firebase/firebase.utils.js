@@ -114,13 +114,23 @@ export const convertCollectionsSnapshotToMap = (collectionsSnapshot) => {
     }, {});
 };
 
+// Get Authenticated User if Session is still valid
+export const getCurrentUserFromAuth = () => {
+    return new Promise((resolve, reject) => {
+        const unsubscribeFromAuth = auth.onAuthStateChanged((userAuth) => {
+            unsubscribeFromAuth();
+            resolve(userAuth);
+        }, reject);
+    });
+};
+
 // Export Firebase Auth & Firestore Instances
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 // Config Sign-in with Google Feature
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: 'select_account' });
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;
