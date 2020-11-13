@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useSelector } from 'react-redux';
 
 // Selectors
 import { selectCartItems } from '../../redux/cart/cart.selectors';
@@ -12,57 +11,57 @@ import StripeCheckoutButton from '../../components/stripe-checkout-button/stripe
 
 import './checkout.styles.scss';
 
-const CheckoutPage = ({ cartItems, total }) => (
-    <div className="checkout-page">
-        <div className="checkout-header">
-            <div className="header-block">
-                <span className="header-title">Product</span>
+const CheckoutPage = () => {
+    const cartItems = useSelector(selectCartItems);
+    const cartTotal = useSelector(selectCartTotal);
+
+    return (
+        <div className="checkout-page">
+            <div className="checkout-header">
+                <div className="header-block">
+                    <span className="header-title">Product</span>
+                </div>
+                <div className="header-block">
+                    <span className="header-title">Description</span>
+                </div>
+                <div className="header-block">
+                    <span className="header-title">Quantity</span>
+                </div>
+                <div className="header-block">
+                    <span className="header-title">Price</span>
+                </div>
+                <div className="header-block">
+                    <span className="header-title">Remove</span>
+                </div>
             </div>
-            <div className="header-block">
-                <span className="header-title">Description</span>
+
+            {cartItems.length ? (
+                cartItems.map((cartItem) => (
+                    <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+                ))
+            ) : (
+                <div className="checkout-empty">
+                    There are no items in your cart
+                </div>
+            )}
+
+            <div className="total">
+                <span>TOTAL: ${cartTotal}</span>
             </div>
-            <div className="header-block">
-                <span className="header-title">Quantity</span>
+
+            <div className="test-warning">
+                *Please use the following test credit card for payments*
+                <br />
+                Card No.: 4242 4242 4242 4242
+                <br />
+                Exp. Date: 01/30
+                <br />
+                CVC: 123
             </div>
-            <div className="header-block">
-                <span className="header-title">Price</span>
-            </div>
-            <div className="header-block">
-                <span className="header-title">Remove</span>
-            </div>
+
+            <StripeCheckoutButton price={cartTotal} />
         </div>
+    );
+};
 
-        {cartItems.length ? (
-            cartItems.map((cartItem) => (
-                <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-            ))
-        ) : (
-            <div className="checkout-empty">
-                There are no items in your cart
-            </div>
-        )}
-
-        <div className="total">
-            <span>TOTAL: ${total}</span>
-        </div>
-
-        <div className="test-warning">
-            *Please use the following test credit card for payments*
-            <br />
-            Card No.: 4242 4242 4242 4242
-            <br />
-            Exp. Date: 01/30
-            <br />
-            CVC: 123
-        </div>
-
-        <StripeCheckoutButton price={total} />
-    </div>
-);
-
-const mapStateToProps = createStructuredSelector({
-    cartItems: selectCartItems,
-    total: selectCartTotal,
-});
-
-export default connect(mapStateToProps)(CheckoutPage);
+export default CheckoutPage;

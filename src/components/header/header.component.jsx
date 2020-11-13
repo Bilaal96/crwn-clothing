@@ -1,10 +1,8 @@
-import React from 'react';
-// import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import React, { useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 // Actions
-import { toggleCartHidden } from '../../redux/cart/cart.actions';
 import { signOutStart } from '../../redux/user/user.actions';
 
 // Selectors
@@ -26,74 +24,74 @@ import {
 
 // import './header.styles.scss';
 
-const Header = ({ currentUser, hidden, toggleCartHidden, signOutStart }) => (
-    <HeaderContainer>
-        <LogoContainer className="logo-container" to="/">
-            <Logo className="logo" title="logo" />
-        </LogoContainer>
+const Header = () => {
+    const currentUser = useSelector(selectCurrentUser);
+    const isCartHidden = useSelector(selectCartHidden);
 
-        <OptionsContainer>
-            {/* OptionLink rendered as NavLink by Default */}
-            <OptionLink
-                exact
-                className="option"
-                activeClassName="selected"
-                to="/"
-            >
-                HOME
-            </OptionLink>
-            <OptionLink
-                className="option"
-                activeClassName="selected"
-                to="/shop"
-            >
-                SHOP
-            </OptionLink>
-            <OptionLink
-                className="option"
-                activeClassName="selected"
-                to="/contact"
-            >
-                CONTACT
-            </OptionLink>
+    const dispatch = useDispatch();
+    const history = useHistory();
 
-            {currentUser ? (
+    // Memoize signOutStart() with useCallback() => as it's dispatched as inline-callback
+    const signOut = useCallback(() => {
+        // history is passed to signOut() Saga
+        // After signOutSuccess() dispatches, history is used in signOut() Saga to redirect user to /signin
+        dispatch(signOutStart(history));
+    }, [dispatch, history]);
+
+    return (
+        <HeaderContainer>
+            <LogoContainer className="logo-container" to="/">
+                <Logo className="logo" title="logo" />
+            </LogoContainer>
+
+            <OptionsContainer>
+                {/* OptionLink rendered as NavLink by Default */}
                 <OptionLink
-                    className="option sign-out-link"
-                    as="div" // render OptionLink as div
-                    onClick={() => {
-                        signOutStart();
-                        if (hidden === false) {
-                            toggleCartHidden();
-                        }
-                    }}
-                >
-                    SIGN OUT
-                </OptionLink>
-            ) : (
-                <OptionLink
-                    className="option sign-in-link"
+                    exact
+                    className="option"
                     activeClassName="selected"
-                    to="/signin"
+                    to="/"
                 >
-                    SIGN IN
+                    HOME
                 </OptionLink>
-            )}
+                <OptionLink
+                    className="option"
+                    activeClassName="selected"
+                    to="/shop"
+                >
+                    SHOP
+                </OptionLink>
+                <OptionLink
+                    className="option"
+                    activeClassName="selected"
+                    to="/contact"
+                >
+                    CONTACT
+                </OptionLink>
 
-            <CartIcon />
-        </OptionsContainer>
-        {hidden ? null : <CartDropdown />}
-    </HeaderContainer>
-);
+                {currentUser ? (
+                    <OptionLink
+                        className="option sign-out-link"
+                        as="div" // render OptionLink as div
+                        onClick={signOut}
+                    >
+                        SIGN OUT
+                    </OptionLink>
+                ) : (
+                    <OptionLink
+                        className="option sign-in-link"
+                        activeClassName="selected"
+                        to="/signin"
+                    >
+                        SIGN IN
+                    </OptionLink>
+                )}
 
-const mapStateToProps = createStructuredSelector({
-    currentUser: selectCurrentUser,
-    hidden: selectCartHidden,
-});
+                <CartIcon />
+            </OptionsContainer>
+            {isCartHidden ? null : <CartDropdown />}
+        </HeaderContainer>
+    );
+};
 
-const mapDispatchToProps = (dispatch) => ({
-    toggleCartHidden: () => dispatch(toggleCartHidden()),
-    signOutStart: () => dispatch(signOutStart()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

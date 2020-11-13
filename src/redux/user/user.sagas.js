@@ -88,10 +88,11 @@ export function* isUserAuthenticated() {
 }
 
 // -- Handle User Sign Out Process
-export function* signOut() {
+export function* signOut({ payload: { history } }) {
     try {
         yield auth.signOut();
         yield put(signOutSuccess());
+        history.push('/signin');
     } catch (error) {
         yield put(signOutFailure(error));
     }

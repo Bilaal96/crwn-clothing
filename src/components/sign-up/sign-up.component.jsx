@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import React, { useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
 // Actions
 import { signUpStart } from '../../redux/user/user.actions';
@@ -10,7 +10,7 @@ import CustomButton from '../custom-button/custom-button.component';
 
 import './sign-up.styles.scss';
 
-const SignUp = ({ signUpStart }) => {
+const SignUp = () => {
     const [userCredentials, setUserCredentials] = useState({
         displayName: '',
         email: '',
@@ -18,8 +18,7 @@ const SignUp = ({ signUpStart }) => {
         confirmPassword: '',
     });
 
-    const { displayName, email, password, confirmPassword } = userCredentials;
-
+    // Handle Form Input Change
     const handleChange = (event) => {
         const { name, value } = event.target;
         setUserCredentials({
@@ -28,17 +27,24 @@ const SignUp = ({ signUpStart }) => {
         });
     };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    // Handle Sign-up with Email
+    const { displayName, email, password, confirmPassword } = userCredentials;
 
-        // if passwords from user input don't match
-        if (password !== confirmPassword) {
-            alert('Passwords do not match');
-            return;
-        }
+    const dispatch = useDispatch();
+    const handleSubmit = useCallback(
+        (event) => {
+            event.preventDefault();
 
-        signUpStart({ displayName, email, password });
-    };
+            // if passwords from user input don't match
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+
+            dispatch(signUpStart({ displayName, email, password }));
+        },
+        [dispatch, displayName, email, password, confirmPassword]
+    );
 
     return (
         <div className="sign-up">
@@ -89,9 +95,4 @@ const SignUp = ({ signUpStart }) => {
     );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-    signUpStart: (newUserCredentials) =>
-        dispatch(signUpStart(newUserCredentials)),
-});
-
-export default connect(null, mapDispatchToProps)(SignUp);
+export default SignUp;

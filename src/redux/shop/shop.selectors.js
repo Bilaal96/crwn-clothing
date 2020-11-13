@@ -1,15 +1,20 @@
 import { createSelector } from 'reselect';
 import memoize from 'lodash.memoize';
 
-// Input Selector => returns SLICE of state
+// Input Selectors => returns SLICE of state
 const selectShop = (state) => state.shop;
 
-// Output Selector
+// -- provides selectSingleCollection with collectionId URL param
+const selectCollectionIdParam = (state, props) =>
+    props.match.params.collectionId;
+
+// Output Selectors
 export const selectAllCollections = createSelector(
     [selectShop],
     (shop) => shop.collections
 );
 
+// Convert collections obj to array; returns array
 export const selectCollectionsForPreview = createSelector(
     [selectAllCollections],
     (collections) =>
@@ -18,10 +23,21 @@ export const selectCollectionsForPreview = createSelector(
             : []
 );
 
-// NOTE: selectSingleCollection is a Curried Selector Function
-export const selectSingleCollection = memoize((collectionUrlParam) =>
-    createSelector([selectAllCollections], (collections) =>
-        collections ? collections[collectionUrlParam] : null
+// ! FOR REFERENCE: This implementation does NOT work with useSelector() Hook
+// NOTE: Here selectSingleCollection is a Curried Selector Function
+// -- As it requires an argument to be passed to it
+// export const selectSingleCollection = memoize((collectionUrlParam) =>
+//     createSelector([selectAllCollections], (collections) =>
+//         collections ? collections[collectionUrlParam] : null
+//     )
+// );
+
+// * This implementation works with or without useSelector() Hook
+// -- eliminates the need for lodash.memoize
+export const selectSingleCollection = createSelector(
+    [selectAllCollections, selectCollectionIdParam],
+    memoize((collections, collectionIdParam) =>
+        collections ? collections[collectionIdParam] : null
     )
 );
 

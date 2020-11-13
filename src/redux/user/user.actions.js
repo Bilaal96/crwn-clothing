@@ -32,8 +32,9 @@ export const checkUserSession = () => ({
 
 // SIGN OUT
 // -- Start
-export const signOutStart = () => ({
+export const signOutStart = (history) => ({
     type: UserActionTypes.SIGN_OUT_START,
+    payload: { history },
 });
 
 // -- Success

@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 // Selectors
 import { selectSingleCollection } from '../../redux/shop/shop.selectors';
@@ -9,8 +9,13 @@ import CollectionItem from '../../components/collection-item/collection-item.com
 
 import './collection.styles.scss';
 
-const CollectionPage = ({ collection }) => {
-    console.log('collection => ', collection);
+const CollectionPage = (props) => {
+    // Retrieval of a SINGLE collection relies on props.match
+    // -- useSelector() does not have direct access to props like mapState does
+    // -- So we use a closure to pass props to selectSingleCollection
+    const collection = useSelector((state) =>
+        selectSingleCollection(state, props)
+    );
 
     const { title, items } = collection;
 
@@ -26,10 +31,4 @@ const CollectionPage = ({ collection }) => {
     );
 };
 
-const mapStateToProps = (state, ownProps) => ({
-    collection: selectSingleCollection(ownProps.match.params.collectionId)(
-        state
-    ), // => curried function call
-});
-
-export default connect(mapStateToProps)(CollectionPage);
+export default CollectionPage;
