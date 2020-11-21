@@ -42,6 +42,7 @@
 
         .value {
             margin: 0 10px;
+            width: auto;
         }
     }
 
@@ -72,7 +73,7 @@
             }
 
             &:hover {
-                transform: scale(1.15);
+                transform: scale(1.15) rotate(90deg);
                 color: rgb(219, 33, 33);
                 background-color: #eee;
 

@@ -18,10 +18,6 @@ import { ShopActionTypes } from './shop.types';
 // Saga-based Tasks
 // -- Handle Async Request for Fetching Collections from Firestore
 export function* fetchCollectionsAsync() {
-    console.log(
-        'fetchCollectionsStart() Action was triggered, execute logic inside fetchCollectionsAsync() Saga'
-    );
-
     // ----- Fetch Collections Data from Firestore -----
     try {
         // Get reference object to "collections" collection
@@ -51,10 +47,6 @@ export function* fetchCollectionsAsync() {
 // Main Sagas
 // -- initiate Fetch for Collections from Firestore
 export function* fetchCollectionsStart() {
-    console.log(
-        'sagaMiddleware ran fetchCollectionsStart() Saga --> now listening for FETCH_COLLECTIONS_START Action'
-    );
-
     yield takeLatest(
         ShopActionTypes.FETCH_COLLECTIONS_START,
         fetchCollectionsAsync
