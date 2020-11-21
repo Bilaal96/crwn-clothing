@@ -6,6 +6,7 @@ const cors = require('cors');
 
 // Import "dotenv" Lib => ONLY in Dev/Test Env
 // -- this ensures our Secret Key remains private
+// -- Env variables can be configured for production when app is hosted
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
 // Import Stripe Library => passing Stripe Secret Key as arg.
