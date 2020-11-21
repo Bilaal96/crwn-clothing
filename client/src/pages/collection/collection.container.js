@@ -9,6 +9,7 @@ import { selectIsCollectionsLoaded } from '../../redux/shop/shop.selectors';
 import withSpinner from '../../components/with-spinner/with-spinner.component';
 import CollectionPage from './collection.component';
 
+// With Redux connect() HOC
 const mapStateToProps = createStructuredSelector({
     isLoading: (state) => !selectIsCollectionsLoaded(state),
 });

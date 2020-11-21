@@ -7,7 +7,7 @@ import { selectCartTotal } from '../../redux/cart/cart.selectors';
 
 // Components
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
-import StripeCheckoutButton from '../../components/stripe-checkout-button/stripe-checkout-button.component';
+import LegacyStripeCheckout from '../../components/legacy-stripe-checkout/legacy-stripe-checkout.component';
 
 import './checkout.styles.scss';
 
@@ -54,12 +54,14 @@ const CheckoutPage = () => {
                 <br />
                 Card No.: 4242 4242 4242 4242
                 <br />
-                Exp. Date: 01/30
+                Exp. Date: <em>Any future date in the MM/YY format</em>
+                <br />
+                <em>(e.g. 01/30)</em>
                 <br />
                 CVC: 123
             </div>
 
-            <StripeCheckoutButton price={cartTotal} />
+            <LegacyStripeCheckout price={cartTotal} />
         </div>
     );
 };

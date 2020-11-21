@@ -21,7 +21,17 @@ export const fetchCollectionsFailure = (errorMessage) => ({
     payload: errorMessage,
 });
 
-// Thunk => Async action that we dispatch in our component
+/**
+ * ----- Redux Thunk Example: Fetching Collections -----
+ * def: Thunk => An async action-creator func that returns a FUNC with dispatch() as a param
+ *^ as opposed to the standard action-creator func which returns an action-object
+ 
+ ** The function returned by a Thunk is used to:
+    *^ execute some async logic
+    *^ handle the success & failure cases depending on the the result of the async logic
+
+ * NOTE: this function serves as an example only - the async logic of the Thunk was adapted for use in a Shop Saga: fetchCollectionsAync()
+ */
 export const fetchCollectionsAsync = () => {
     return (dispatch) => {
         // ----- Fetch Collections Data from Firestore -----
