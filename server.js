@@ -56,7 +56,7 @@ app.post('/payment', (req, res) => {
   });
 });
 
-// Listen For Connections
+// Listen For Connections on "port"
 app.listen(port, (error) => {
   if (error) throw error;
   console.log(`Server running on Port: ${port}`);
