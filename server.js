@@ -46,6 +46,11 @@ app.post('/payment', (req, res) => {
     currency: 'usd',
   };
 
+  // ! CONTINUE HERE --> test in dev then prod
+  // ! TRY ADDING STATIC JSON FILE
+  // -- https://elements.heroku.com/buildpacks/mars/create-react-app-buildpack
+  console.log('body for stripe.charge.create =>', body);
+
   // Create Stripe payment charge & handle success & failure cases
   stripe.charges.create(body, (stripeErr, stripeRes) => {
     if (stripeErr) {

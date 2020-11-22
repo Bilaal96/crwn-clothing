@@ -35,6 +35,7 @@ const LegacyStripeCheckout = ({ price }) => {
     return (
         <StripeCheckout
             className="stripe-checkout"
+            ComponentClass="span"
             label="Pay Now"
             panelLabel="Pay"
             name="CRWN Clothing Ltd."
