@@ -8,7 +8,7 @@ import { store, persistor } from './redux/store';
 
 import App from './App';
 
-import './index.scss';
+import './index.styles.scss';
 
 ReactDOM.render(
     <React.StrictMode>
