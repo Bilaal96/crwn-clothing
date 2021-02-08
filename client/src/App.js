@@ -17,7 +17,8 @@ import CheckoutPage from './pages/checkout/checkout.component';
 // Components
 import Header from './components/header/header.component';
 
-import './App.css';
+// Styles
+import { AppStyles } from './App.styles';
 
 const App = () => {
     const currentUser = useSelector(selectCurrentUser);
@@ -28,7 +29,7 @@ const App = () => {
     }, [dispatch]);
 
     return (
-        <div>
+        <AppStyles>
             <Header />
             <Switch>
                 <Route exact path="/" component={HomePage} />
@@ -46,7 +47,7 @@ const App = () => {
                     }
                 />
             </Switch>
-        </div>
+        </AppStyles>
     );
 };
 

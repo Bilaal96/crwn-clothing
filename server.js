@@ -27,37 +27,37 @@ app.use(cors());
 
 // Serve Static Client Files => ONLY in Production Env
 if (process.env.NODE_ENV === 'production') {
-  // Allow static files to be served from: __dirname/client/build
-  app.use(express.static(path.join(__dirname, 'client/build')));
+    // Allow static files to be served from: __dirname/client/build
+    app.use(express.static(path.join(__dirname, 'client/build')));
 
-  // Serve index.html for any incoming HTTP GET Request
-  // -- all static files are built into small modules/packages from index.html
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
+    // Serve index.html for any incoming HTTP GET Request
+    // -- all static files are built into small modules/packages from index.html
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    });
 }
 
 // Pass Data for Payment Charge to Stripe Service via Stripe Library
 app.post('/payment', (req, res) => {
-  // Extract required data from request.body & set currency
-  const body = {
-    source: req.body.token.id,
-    amount: req.body.amount,
-    currency: 'usd',
-  };
+    // Extract required data from request.body & set currency
+    const body = {
+        source: req.body.token.id,
+        amount: req.body.amount,
+        currency: 'usd',
+    };
 
-  // Create Stripe payment charge & handle success & failure cases
-  stripe.charges.create(body, (stripeErr, stripeRes) => {
-    if (stripeErr) {
-      res.status(500).send({ error: stripeErr });
-    } else {
-      res.status(200).send({ success: stripeRes });
-    }
-  });
+    // Create Stripe payment charge & handle success & failure cases
+    stripe.charges.create(body, (stripeErr, stripeRes) => {
+        if (stripeErr) {
+            res.status(500).send({ error: stripeErr });
+        } else {
+            res.status(200).send({ success: stripeRes });
+        }
+    });
 });
 
 // Listen For Connections on "port"
 app.listen(port, (error) => {
-  if (error) throw error;
-  console.log(`Server running on Port: ${port}`);
+    if (error) throw error;
+    console.log(`Server running on Port: ${port}`);
 });
