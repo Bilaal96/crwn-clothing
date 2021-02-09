@@ -7,7 +7,6 @@ export const MenuItemContainer = styled.a`
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #4a4a4a;
     border-radius: 4px;
     overflow: hidden;
     position: relative;
@@ -56,13 +55,15 @@ export const BackgroundImage = styled.div`
     background-image: ${(props) => `url(${props.imageUrl})`};
     background-position: center;
     background-size: cover;
+    border: 1px solid #4a4a4a;
+    border-radius: 4px;
 
     /* Hoverable devices */
     ${mediaQuery.hoverable} {
         ${MenuItemContainer}:hover & {
             /* Scale img on hover, then snap back to original size */
-            transform: scale(1.1);
             transition: transform 5s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+            transform: scale(1.1);
         }
     }
 `;
