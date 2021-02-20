@@ -1,30 +1,40 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 // Actions
 import { toggleCartHidden } from '../../redux/cart/cart.actions';
+
 // Selectors
 import { selectCartItemsCount } from '../../redux/cart/cart.selectors';
 
-// Components
-import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
+// Styled Components
+import * as SC from './cart-icon.styles';
 
-import './cart-icon.styles.scss';
-
-const CartIcon = () => {
-    // Get the total number of cart items via Cart selector
+// Child of CartDropdownSwitch
+const CartIcon = ({ isCartHidden }) => {
     const itemCount = useSelector(selectCartItemsCount);
-
+    const location = useLocation();
     const dispatch = useDispatch();
-    const dispatchToggleCartHidden = useCallback(() => {
-        dispatch(toggleCartHidden());
-    }, [dispatch]);
+
+    const dispatchToggleCartHidden = (e) => {
+        if (e.type === 'click' || (e.type === 'keyup' && e.keyCode === 13)) {
+            dispatch(toggleCartHidden());
+        }
+    };
 
     return (
-        <div className="cart-icon" onClick={dispatchToggleCartHidden}>
-            <ShoppingIcon className="shopping-icon" />
-            <span className="item-count">{itemCount}</span>
-        </div>
+        <SC.CartDropdownSwitch
+            tabIndex="0"
+            onKeyUp={dispatchToggleCartHidden}
+            onClick={dispatchToggleCartHidden}
+        >
+            <SC.CartIcon
+                $isCartHidden={isCartHidden}
+                $currentPath={location.pathname}
+            />
+            <SC.CartItemsCount>{itemCount}</SC.CartItemsCount>
+        </SC.CartDropdownSwitch>
     );
 };
 

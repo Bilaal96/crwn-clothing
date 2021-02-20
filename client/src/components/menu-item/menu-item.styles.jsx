@@ -1,66 +1,58 @@
-// REVIEW
-// ! Set grid area dynamically through props or attributes
-import styled from 'styled-components';
-import { mediaQuery, colors } from '../../App.styles';
+import styled, { css } from 'styled-components';
+import { mediaQuery } from '../../config/theme';
 
-export const MenuItemContainer = styled.a`
+export const MenuItem = styled.a`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 4px;
+    border-radius: 0.4rem;
     overflow: hidden;
     position: relative;
     transition: all 0.1s ease-out;
 
-    /** Set Grid Areas 
-     * See grid-template-area in directory.styles.jsx
+    /** Dynamically Set Grid Areas via props
+     * For props-value see menu-item.component.jsx 
+     * For Grid Container, see grid-template-area in 
+       directory.styles.jsx
      */
-    &.hats {
-        grid-area: hats;
-    }
-
-    &.jackets {
-        grid-area: jackets;
-    }
-
-    &.footwear {
-        grid-area: footwear;
-    }
-
-    &.womens {
-        grid-area: womens;
-    }
-
-    &.mens {
-        grid-area: mens;
-    }
+    ${({ $menuItemTitle }) => css`
+        grid-area: ${$menuItemTitle};
+    `}
 
     /* Hoverable devices */
     ${mediaQuery.hoverable} {
         &:hover {
             cursor: pointer;
-            box-shadow: 0 0 1.2rem 0.1rem ${colors.shadow};
+            box-shadow: 0 0 1.2rem 0.1rem
+                ${({ theme }) => theme.colors.charcoal};
         }
+    }
+
+    /* Accessibility */
+    &:focus {
+        outline: 0;
+        box-shadow: 0 0 1.2rem 0.1rem ${({ theme }) => theme.colors.charcoal};
     }
 
     /* Touch devices */
     &:active {
-        box-shadow: 0 0 1.2rem 0.1rem ${colors.shadow};
+        outline: 0;
+        box-shadow: 0 0 1.2rem 0.1rem ${({ theme }) => theme.colors.charcoal};
     }
 `;
 
 export const BackgroundImage = styled.div`
     width: 100%;
     height: 100%;
-    background-image: ${(props) => `url(${props.imageUrl})`};
+    background-image: ${({ imageUrl }) => `url(${imageUrl})`};
     background-position: center;
     background-size: cover;
-    border: 1px solid #4a4a4a;
-    border-radius: 4px;
+    border: 0.1rem solid ${({ theme }) => theme.colors.charcoal};
+    border-radius: 0.4rem;
 
     /* Hoverable devices */
     ${mediaQuery.hoverable} {
-        ${MenuItemContainer}:hover & {
+        ${MenuItem}:hover & {
             /* Scale img on hover, then snap back to original size */
             transition: transform 5s cubic-bezier(0.25, 0.45, 0.45, 0.95);
             transform: scale(1.1);
@@ -75,22 +67,26 @@ export const Content = styled.div`
     justify-content: center;
     align-items: center;
     padding: 1.2rem 1.4rem;
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.white};
     opacity: 0.8;
-    border: 1px solid black;
-    border-radius: 3px;
+    border: 0.1rem solid black;
+    border-radius: 0.3rem;
     transition: opacity 0.1s ease-out;
 
     /* Hoverable devices */
     ${mediaQuery.hoverable} {
-        ${MenuItemContainer}:hover & {
+        ${MenuItem}:hover & {
             opacity: 0.9;
         }
     }
 
+    /* Accessibility */
+    ${MenuItem}:focus & {
+        opacity: 0.9;
+    }
+
     /* Touch devices */
-    &:active {
-        transition: opacity 0.1s ease-out;
+    ${MenuItem}:active & {
         opacity: 0.9;
     }
 
@@ -109,7 +105,7 @@ export const Title = styled.h1`
     font-size: 1.8rem;
     padding: 0rem 1rem;
     margin-bottom: 0.4rem;
-    color: #4a4a4a;
+    color: ${({ theme }) => theme.colors.charcoal};
 
     ${mediaQuery.tablet} {
         font-size: 2rem;
@@ -124,7 +120,7 @@ export const Title = styled.h1`
 export const Subtitle = styled.p`
     font-size: 1.4rem;
     font-weight: bold;
-    color: ${colors.emphasise};
+    color: ${({ theme }) => theme.colors.pelorous};
     transition: all 0.1s ease-out;
 
     ${mediaQuery.tablet} {

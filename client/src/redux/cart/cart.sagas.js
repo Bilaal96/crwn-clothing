@@ -13,7 +13,7 @@ export function* clearCartOnSignOut() {
 }
 
 // Main Sagas
-// -- spawn clearCart() Saga on successful Sign Out
+// -- spawn clearCartOnSignOut Saga on successful Sign Out
 export function* onSignOutSuccess() {
     yield takeLatest(UserActionTypes.SIGN_OUT_SUCCESS, clearCartOnSignOut);
 }

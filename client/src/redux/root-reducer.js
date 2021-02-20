@@ -7,6 +7,7 @@ import userReducer from './user/user.reducer';
 import cartReducer from './cart/cart.reducer';
 import directoryReducer from './directory/directory.reducer';
 import shopReducer from './shop/shop.reducer';
+import navReducer from './nav/nav.reducer';
 
 /**
  * --- Redux Persist Congiguration Options ---
@@ -24,6 +25,7 @@ const persistConfig = {
 
 // rootReducer
 const rootReducer = combineReducers({
+    nav: navReducer,
     user: userReducer,
     cart: cartReducer,
     directory: directoryReducer,

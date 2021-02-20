@@ -7,17 +7,18 @@ import { selectDirectorySections } from '../../redux/directory/directory.selecto
 // Components
 import MenuItem from '../menu-item/menu-item.component';
 
-// Styles
-import { DirectoryWrapper } from './directory.styles';
+// Styled Components
+import * as SC from './directory.styles';
 
 const Directory = () => {
     const directorySections = useSelector(selectDirectorySections);
+
     return (
-        <DirectoryWrapper className="directory-menu">
+        <SC.Directory>
             {directorySections.map(({ id, ...otherSectionProps }) => (
                 <MenuItem key={id} {...otherSectionProps} />
             ))}
-        </DirectoryWrapper>
+        </SC.Directory>
     );
 };
 

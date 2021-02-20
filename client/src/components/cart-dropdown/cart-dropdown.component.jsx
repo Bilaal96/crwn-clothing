@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 // Actions
 import { toggleCartHidden } from '../../redux/cart/cart.actions';
+
 // Selectors
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 
@@ -11,20 +12,18 @@ import { selectCartItems } from '../../redux/cart/cart.selectors';
 import CartItem from '../cart-item/cart-item.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-import './cart-dropdown.styles.scss';
+// Styled Components
+import * as SC from './cart-dropdown.styles';
 
 const CartDropdown = () => {
-    // Get cartItems via Cart selector
     const cartItems = useSelector(selectCartItems);
-
-    // Get dispatch() function from React Redux Lib
     const dispatch = useDispatch();
 
-    // Get history object from React Router DOM Lib
+    // react-router's history fn
     const history = useHistory();
 
     useEffect(() => {
-        const handleToggleCartHidden = (e) => {
+        const handleOutsideClick = (e) => {
             const cartDropdown = document.querySelector('.cart-dropdown');
 
             // Is event.target the cartDropdown itself? return / DO NOTHING
@@ -45,31 +44,32 @@ const CartDropdown = () => {
             }
         };
 
-        document.addEventListener('click', handleToggleCartHidden);
+        document.addEventListener('click', handleOutsideClick);
+
         return () => {
-            document.removeEventListener('click', handleToggleCartHidden);
+            document.removeEventListener('click', handleOutsideClick);
         };
     });
 
     return (
-        <div className="cart-dropdown">
+        <SC.CartDropdown className="cart-dropdown">
             {cartItems.length ? (
-                <div className="cart-items">
+                <SC.CartItemsContainer>
                     {cartItems.map((cartItem) => (
                         <CartItem key={cartItem.id} item={cartItem} />
                     ))}
-                </div>
+                </SC.CartItemsContainer>
             ) : (
-                <span className="cart-empty">Your cart is empty</span>
+                <SC.CartEmptyMessage>Your cart is empty</SC.CartEmptyMessage>
             )}
             <CustomButton
                 className="cart-checkout-btn"
                 onClick={() => history.push('/checkout')}
-                inverted
+                $styleType="cartCheckout"
             >
                 GO TO CHECKOUT
             </CustomButton>
-        </div>
+        </SC.CartDropdown>
     );
 };
 

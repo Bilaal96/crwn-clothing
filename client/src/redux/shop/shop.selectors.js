@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import memoize from 'lodash.memoize';
 
 // Input Selectors => returns SLICE of state
 const selectShop = (state) => state.shop;
@@ -26,19 +25,18 @@ export const selectCollectionsForPreview = createSelector(
 // ! FOR REFERENCE: This implementation does NOT work with useSelector() Hook
 // NOTE: Here selectSingleCollection is a Curried Selector Function
 // -- As it requires an argument to be passed to it
-// export const selectSingleCollection = memoize((collectionUrlParam) =>
-//     createSelector([selectAllCollections], (collections) =>
-//         collections ? collections[collectionUrlParam] : null
-//     )
-// );
+/* export const selectSingleCollection = memoize((collectionUrlParam) =>
+    createSelector([selectAllCollections], (collections) =>
+        collections ? collections[collectionUrlParam] : null
+    )
+); */
 
 // * This implementation works with or without useSelector() Hook
 // -- eliminates the need for lodash.memoize
 export const selectSingleCollection = createSelector(
     [selectAllCollections, selectCollectionIdParam],
-    memoize((collections, collectionIdParam) =>
+    (collections, collectionIdParam) =>
         collections ? collections[collectionIdParam] : null
-    )
 );
 
 // Get isFetching state-value

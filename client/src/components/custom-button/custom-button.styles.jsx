@@ -1,72 +1,111 @@
 import styled, { css } from 'styled-components';
 
-// Base styles that may conflict with conditionally rendered styles
-const buttonStyles = css`
-    background-color: black;
-    color: white;
-    border: 1px solid transparent;
+// Default styles for CustomButton
+// -- returned if no $styleType prop passed to CustomButton
+const defaultButtonStyles = ({ theme: { colors } }) => css`
+    background-color: ${colors.black};
+    color: ${colors.white};
+    border: 0.1rem solid transparent;
 
     &:hover {
-        background-color: white;
-        color: black;
-        border: 1px solid black;
+        background-color: ${colors.white};
+        color: ${colors.black};
+        border: 0.1rem solid ${colors.black};
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0.4rem 0.2rem ${({ theme }) => theme.colors.pelorous};
     }
 `;
 
-// Styles rendered based on props
-// -- prop: inverted
-const invertedButtonStyles = css`
-    background-color: white;
-    color: black;
-    border: 1px solid black;
+// Styles rendered based on props.$styleType
+// -- $styleType = "inverted"
+const invertedButtonStyles = ({ theme: { colors } }) => css`
+    background-color: ${colors.white};
+    color: ${colors.black};
+    border: 0.1rem solid black;
 
     &:hover {
-        background-color: black;
-        color: white;
-        border: 1px solid transparent;
+        background-color: ${colors.black};
+        color: ${colors.white};
+        border: 0.1rem solid transparent;
     }
 `;
 
-// -- prop: isGoogleSignIn
-const googleSignInStyles = css`
-    background-color: #4285f4;
-    color: white;
-    border: 1px solid transparent;
+// -- $styleType = "isGoogleSignIn"
+const googleSignInStyles = ({ theme: { colors } }) => css`
+    background-color: ${colors.pelorous};
+    color: ${colors.white};
+    border: 0.1rem solid transparent;
+    font-size: 1.1rem; /* FIXME temporary fix */
 
     &:hover {
-        background-color: white;
-        color: #357ae8;
-        border: 1px solid #357ae8;
+        background-color: ${colors.white};
+        color: ${colors.pelorous};
+        border: 0.1rem solid ${colors.pelorous};
     }
 `;
 
-// Function receives CustomButton props
+// -- $styleType = "checkout"
+const cartCheckoutButtonStyles = ({ theme: { colors } }) => css`
+    background-color: ${colors.coral};
+    color: ${colors.white};
+    border: none;
+    opacity: 0.9;
+
+    &:hover {
+        background-color: ${colors.mistyBlue};
+        color: ${colors.white};
+        border: none;
+        opacity: 0.8;
+    }
+`;
+
+// Function receives props via CustomButton
 // -- conditionally renders styles based on props
-const getButtonStyles = ({ inverted, isGoogleSignIn }) => {
-    if (isGoogleSignIn) {
-        return googleSignInStyles;
+const getButtonStyles = (props) => {
+    switch (props.$styleType) {
+        case 'inverted':
+            return invertedButtonStyles;
+        case 'googleSignIn':
+            return googleSignInStyles(props);
+        case 'cartCheckout':
+            return cartCheckoutButtonStyles(props);
+        default:
+            return defaultButtonStyles;
     }
-
-    return inverted ? invertedButtonStyles : buttonStyles;
 };
 
 // Base styled-component
-export const CustomButtonContainer = styled.button`
-    min-width: 165px;
-    width: auto;
-    height: 50px;
-    letter-spacing: 0.5px;
-    line-height: 50px;
-    padding: 0 35px;
-    font-size: 15px;
-    color: white;
-    text-transform: uppercase;
-    font-family: 'Open Sans Condensed';
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
+export const CustomButton = styled.button`
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-width: 16.5rem;
+    width: auto;
+    height: 5rem;
+    letter-spacing: 0.05rem;
+    padding: 0 3.5rem;
+    font-size: 1.4rem;
+    color: ${({ theme }) => theme.colors.white};
+    text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    border-radius: 0.4rem;
+    border: none;
+    cursor: pointer;
     transition: all 0.2s;
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0.4rem 0.2rem ${({ theme }) => theme.colors.black};
+    }
+
     ${getButtonStyles}
+
+    &:active {
+        outline: none;
+        box-shadow: none;
+    }
 `;

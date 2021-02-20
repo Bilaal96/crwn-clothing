@@ -77,7 +77,7 @@ const SignIn = () => {
                     <CustomButton
                         type="button"
                         onClick={dispatchGoogleSignInStart}
-                        isGoogleSignIn
+                        $styleType="googleSignIn"
                     >
                         Sign In With Google
                     </CustomButton>

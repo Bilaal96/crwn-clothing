@@ -29,7 +29,7 @@ const CollectionItem = (props) => {
                 <span className="name">{name}</span>
                 <span className="price">${price}</span>
             </div>
-            <CustomButton onClick={dispatchAddItem} inverted>
+            <CustomButton onClick={dispatchAddItem} $styleType="inverted">
                 Add To Cart
             </CustomButton>
         </div>

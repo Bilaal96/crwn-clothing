@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { mediaQuery } from '../../App.styles';
+import { mediaQuery } from '../../config/theme';
 
-export const DirectoryWrapper = styled.nav`
+export const Directory = styled.nav`
     display: grid;
     height: 100%;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(5, 250px);
+    grid-template-rows: repeat(5, 25rem);
     grid-template-areas:
         'mens'
         'womens'
@@ -13,26 +13,30 @@ export const DirectoryWrapper = styled.nav`
         'jackets'
         'footwear';
     gap: 1.2rem;
-    margin-bottom: 2rem;
 
     ${mediaQuery.tablet} {
         grid-template-columns: repeat(2, auto);
-        grid-template-rows: repeat(2, 350px) 400px;
+        grid-template-rows: 35rem 40rem 35rem;
         grid-template-areas:
             'mens womens'
             'hats hats'
             'jackets footwear';
         gap: 1.5rem;
-        margin-bottom: 3rem;
+    }
+
+    /* Keeps tablet layout but make grid rows slightly taller */
+    ${mediaQuery.laptop} {
+        grid-template-rows: 39rem 40rem 39rem;
     }
 
     ${mediaQuery.desktop} {
         grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: 380px 400px;
+        /* Rows do not extend outside of viewport */
+        /* so at fullscreen there is no scroll bar */
+        grid-template-rows: 37rem 37.6rem;
         grid-template-areas:
             'hats hats jackets jackets footwear footwear'
             'womens womens womens mens mens mens';
         gap: 1.8rem;
-        margin-bottom: 4rem;
     }
 `;
