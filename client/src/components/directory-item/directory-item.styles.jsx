@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { mediaQuery } from '../../config/theme';
 
-export const MenuItem = styled.a`
+export const DirectoryItem = styled.a`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,7 +52,7 @@ export const BackgroundImage = styled.div`
 
     /* Hoverable devices */
     ${mediaQuery.hoverable} {
-        ${MenuItem}:hover & {
+        ${DirectoryItem}:hover & {
             /* Scale img on hover, then snap back to original size */
             transition: transform 5s cubic-bezier(0.25, 0.45, 0.45, 0.95);
             transform: scale(1.1);
@@ -75,18 +75,18 @@ export const Content = styled.div`
 
     /* Hoverable devices */
     ${mediaQuery.hoverable} {
-        ${MenuItem}:hover & {
+        ${DirectoryItem}:hover & {
             opacity: 0.9;
         }
     }
 
     /* Accessibility */
-    ${MenuItem}:focus & {
+    ${DirectoryItem}:focus & {
         opacity: 0.9;
     }
 
     /* Touch devices */
-    ${MenuItem}:active & {
+    ${DirectoryItem}:active & {
         opacity: 0.9;
     }
 

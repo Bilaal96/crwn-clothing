@@ -2,9 +2,9 @@ import React from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 
 // Styled Components
-import * as SC from './menu-item.styles';
+import * as SC from './directory-item.styles';
 
-const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
+const DirectoryItem = ({ title, imageUrl, size, linkUrl }) => {
     const history = useHistory();
     const match = useRouteMatch();
 
@@ -15,7 +15,7 @@ const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
     };
 
     return (
-        <SC.MenuItem
+        <SC.DirectoryItem
             tabIndex="0"
             onKeyUp={goToCollectionPage}
             onClick={goToCollectionPage}
@@ -26,8 +26,8 @@ const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
                 <SC.Title>{title.toUpperCase()}</SC.Title>
                 <SC.Subtitle>SHOP NOW</SC.Subtitle>
             </SC.Content>
-        </SC.MenuItem>
+        </SC.DirectoryItem>
     );
 };
 
-export default MenuItem;
+export default DirectoryItem;

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { selectDirectorySections } from '../../redux/directory/directory.selectors';
 
 // Components
-import MenuItem from '../menu-item/menu-item.component';
+import DirectoryItem from '../directory-item/directory-item.component';
 
 // Styled Components
 import * as SC from './directory.styles';
@@ -16,7 +16,7 @@ const Directory = () => {
     return (
         <SC.Directory>
             {directorySections.map(({ id, ...otherSectionProps }) => (
-                <MenuItem key={id} {...otherSectionProps} />
+                <DirectoryItem key={id} {...otherSectionProps} />
             ))}
         </SC.Directory>
     );
