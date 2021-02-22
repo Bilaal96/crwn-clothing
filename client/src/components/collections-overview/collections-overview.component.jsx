@@ -7,16 +7,19 @@ import { selectCollectionsForPreview } from '../../redux/shop/shop.selectors';
 // Components
 import CollectionPreview from '../collection-preview/collection-preview.component';
 
-import './collections-overview.styles.scss';
+// Styled Components
+import * as SC from './collections-overview.styles';
+
+// import './collections-overview.styles.scss';
 
 const CollectionsOverview = () => {
     const collections = useSelector(selectCollectionsForPreview);
     return (
-        <div className="collections-overview">
+        <SC.CollectionsOverview>
             {collections.map(({ id, ...otherCollectionProps }) => (
                 <CollectionPreview key={id} {...otherCollectionProps} />
             ))}
-        </div>
+        </SC.CollectionsOverview>
     );
 };
 

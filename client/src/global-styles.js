@@ -57,10 +57,11 @@ const GlobalStyle = createGlobalStyle`
         }
     }
 
-     .disable-scroll {
+    .disable-scroll {
         height: 100vh;
         overflow: hidden;
-    }
+    } 
+     
 
     .resize-animation-stopper * {
         animation: none !important;

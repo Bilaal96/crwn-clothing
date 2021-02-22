@@ -12,7 +12,7 @@ import { mediaQuery } from './config/theme';
  
  * NOTE: 1 rem = 10px
  */
-export const PageWrapper = styled.section`
+export const PageWrapper = styled.main`
     margin: 9rem 2rem 2rem;
 
     ${mediaQuery.tablet} {
@@ -32,6 +32,7 @@ export const PageOverlay = styled.div`
     bottom: -10rem;
     left: 0;
     background-color: ${({ theme }) => theme.colors.overlay};
+    cursor: pointer;
 
     ${mediaQuery.desktop} {
         display: none;

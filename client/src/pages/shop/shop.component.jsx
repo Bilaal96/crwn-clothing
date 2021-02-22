@@ -19,7 +19,7 @@ const ShopPage = ({ match }) => {
     }, [dispatch]);
 
     return (
-        <div className="shop-page">
+        <section className="shop">
             <Route
                 exact
                 path={`${match.path}`} // path: '/shop'
@@ -29,7 +29,7 @@ const ShopPage = ({ match }) => {
                 path={`${match.path}/:collectionId`}
                 component={CollectionPageContainer}
             />
-        </div>
+        </section>
     );
 };
 

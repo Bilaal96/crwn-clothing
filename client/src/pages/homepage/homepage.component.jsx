@@ -5,9 +5,9 @@ import Directory from '../../components/directory/directory.component';
 
 const HomePage = () => {
     return (
-        <main className="home-page">
+        <section>
             <Directory />
-        </main>
+        </section>
     );
 };
 
