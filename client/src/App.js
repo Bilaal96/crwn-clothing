@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // Actions
 import { checkUserSession } from './redux/user/user.actions';
+import { closeSideNav } from './redux/nav/nav.actions';
 
 // Selectors
 import { selectCurrentUser } from './redux/user/user.selectors';
@@ -48,6 +49,15 @@ const App = () => {
         };
     }, []);
 
+    // Disable Scroll when isSideNavOpen === true
+    useEffect(() => {
+        isSideNavOpen
+            ? document.body.classList.add('disable-scroll')
+            : document.body.classList.remove('disable-scroll');
+    }, [isSideNavOpen]);
+
+    const dispatchCloseSideNav = () => dispatch(closeSideNav());
+
     return (
         <>
             <Header />
@@ -72,7 +82,7 @@ const App = () => {
             </SC.PageWrapper>
 
             {/* Render PageOverlay when Side Nav is OPEN */}
-            {isSideNavOpen && <SC.PageOverlay />}
+            {isSideNavOpen && <SC.PageOverlay onClick={dispatchCloseSideNav} />}
         </>
     );
 };

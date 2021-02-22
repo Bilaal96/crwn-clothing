@@ -85,6 +85,7 @@ export const Logo = styled(SvgCrown).attrs((props) => ({
         fill-opacity: 0.6;
     }
 
+    #Oval-mid,
     #Rectangle {
         fill: ${({ theme }) => theme.colors.charcoal};
         /* opacity: 0.9; */
