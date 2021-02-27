@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { mediaQuery } from '../../config/theme';
+import styled from 'styled-components/macro';
+import mediaQuery from '../../theme/media-queries';
 
 export const CartItem = styled.div`
     display: flex;

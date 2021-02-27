@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { mediaQuery } from '../../config/theme';
+import styled from 'styled-components/macro';
+import mediaQuery from '../../theme/media-queries';
 
 export const Directory = styled.nav`
     display: grid;
@@ -30,9 +30,9 @@ export const Directory = styled.nav`
     }
 
     ${mediaQuery.desktop} {
-        grid-template-columns: repeat(6, 1fr);
         /* Rows do not extend outside of viewport */
         /* so at fullscreen there is no scroll bar */
+        grid-template-columns: repeat(6, 1fr);
         grid-template-rows: 37rem 37.6rem;
         grid-template-areas:
             'hats hats jackets jackets footwear footwear'

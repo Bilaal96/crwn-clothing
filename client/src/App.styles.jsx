@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { mediaQuery } from './config/theme';
+import styled from 'styled-components/macro';
+import mediaQuery from './theme/media-queries';
 
 /**
  * PageWrapper aligns the MAIN content for a page
@@ -19,8 +19,15 @@ export const PageWrapper = styled.main`
         margin: 11rem 4rem 3rem;
     }
 
-    ${mediaQuery.desktop} {
+    ${mediaQuery.laptop} {
         margin: 13rem 6.5rem 4rem;
+    }
+    ${mediaQuery.desktop} {
+        /* margin: 13rem 6.5rem 4rem; */
+        margin: 13rem 8rem 4rem;
+    }
+    ${mediaQuery.largeScreen} {
+        margin: 13rem 16rem 4rem;
     }
 `;
 

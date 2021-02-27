@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { mediaQuery } from '../../config/theme';
+import mediaQuery from '../../theme/media-queries';
 import { ReactComponent as SvgShoppingBag } from '../../assets/shopping-bag.svg';
 
 export const CartDropdownSwitch = styled.div`

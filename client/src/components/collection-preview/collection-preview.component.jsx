@@ -1,37 +1,51 @@
-import React from 'react';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useRouteMatch } from 'react-router-dom';
 
 // Components
 import CollectionItem from '../collection-item/collection-item.component';
 
-import './collection-preview.styles.scss';
+// Styled Components
+import * as SC from './collection-preview.styles';
 
 const CollectionPreview = ({ routeName, title, items }) => {
-    const history = useHistory();
     const match = useRouteMatch();
+    const previewItemsLimit = 4;
+
+    // ! Experimental - horizontal scroll w/Mousewheel
+    // useEffect(() => {
+    //     const previewItems = document.querySelector('.preview-items');
+
+    //     const horizontalScroll = (e) => {
+    //         if (e.deltaY > 0) previewItems.scrollLeft += 5;
+    //         else previewItems.scrollLeft -= 5;
+    //     };
+
+    //     previewItems.addEventListener('wheel', horizontalScroll);
+
+    //     return () =>
+    //         previewItems.removeEventListener('wheel', horizontalScroll);
+    // }, []);
 
     return (
-        <div className="collection-preview">
-            <h1 className="collection-preview-title">
-                <span
-                    className="collection-link"
-                    onClick={() => history.push(`${match.path}/${routeName}`)}
-                >
-                    VIEW{' '}
-                    <span className="collection-name">
-                        {title.toUpperCase()}
-                    </span>{' '}
-                    COLLECTION
-                </span>
-            </h1>
-            <div className="preview">
+        <SC.CollectionPreview>
+            <SC.CollectionPreviewTitle>
+                <SC.CollectionRouterLink to={`${match.path}/${routeName}`}>
+                    <SC.CollectionName>
+                        SHOP <span>{title.toUpperCase()}</span>
+                    </SC.CollectionName>
+                </SC.CollectionRouterLink>
+            </SC.CollectionPreviewTitle>
+            <SC.PreviewItemsGrid
+                className="preview-items"
+                numOfCols={previewItemsLimit}
+            >
                 {items
-                    .filter((item, index) => index < 4)
+                    .filter((item, index) => index < previewItemsLimit)
                     .map((item) => (
                         <CollectionItem key={item.id} item={item} />
                     ))}
-            </div>
-        </div>
+            </SC.PreviewItemsGrid>
+        </SC.CollectionPreview>
     );
 };
 

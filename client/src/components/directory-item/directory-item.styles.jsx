@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { mediaQuery } from '../../config/theme';
+import mediaQuery from '../../theme/media-queries';
 
 export const DirectoryItem = styled.a`
     display: flex;
@@ -101,7 +101,7 @@ export const Content = styled.div`
     }
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h2`
     font-size: 1.8rem;
     padding: 0rem 1rem;
     margin-bottom: 0.4rem;

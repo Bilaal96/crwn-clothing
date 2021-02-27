@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { mediaQuery } from '../../config/theme';
+import mediaQuery from '../../theme/media-queries';
 
 // NOTE: PARENT FLEX CONTAINER IS Header styled-component
 

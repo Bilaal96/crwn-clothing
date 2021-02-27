@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { mediaQuery } from '../../config/theme';
+import styled from 'styled-components/macro';
+import mediaQuery from '../../theme/media-queries';
 
 export const CartDropdown = styled.div`
     position: absolute;
@@ -95,8 +95,11 @@ export const CartItemsContainer = styled.div`
         border-radius: 1rem;
 
         &:hover {
-            cursor: pointer;
             background: #bbb;
+        }
+
+        &:active {
+            background: #aaa;
         }
     }
 `;

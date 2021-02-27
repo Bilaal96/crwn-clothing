@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { mediaQuery } from '../../config/theme';
+import mediaQuery from '../../theme/media-queries';
 
 /** 
  * ----- CustomNavLink -----
@@ -25,7 +25,7 @@ const mobileLinkStyles = ({ theme: { colors } }) => css`
     font-size: 1.6rem;
     border-radius: 0.4rem;
     color: ${colors.ivory};
-    background: ${colors.tealGreen};
+    background: ${colors.mistyBlue};
 
     /* Device-specific Media Queries INHERIT the following Styles */
     text-align: center;
@@ -51,7 +51,7 @@ const mobileLinkStyles = ({ theme: { colors } }) => css`
     /* Currently selected link */
     &.selected {
         width: 84%;
-        background: ${colors.coral};
+        background: ${colors.coralLight};
         color: ${({ theme }) => theme.colors.white};
         opacity: 0.9;
         transition: all 0.1s ease;
@@ -91,7 +91,7 @@ const mobileSignInLinkStyles = ({ theme: { colors } }) => css`
 
     /* Mobile Touch / Click feedback */
     &:active {
-        background: ${colors.pelorous};
+        background: ${colors.bahamaBlue};
     }
 `;
 
@@ -140,22 +140,6 @@ const desktopLinkStyles = ({ theme: { colors } }) => css`
     opacity: 0.6;
     transition: all 0.3s ease;
 
-    /* Background - visible on hover  */
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-        background: linear-gradient(#fff, rgba(0, 0, 0, 0.1));
-        opacity: 0;
-        transform: scale(0);
-        transform-origin: bottom;
-        transition: background 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
-    }
-
     /* Animated Underline - visible on hover */
     &::after {
         content: '';
@@ -177,17 +161,11 @@ const desktopLinkStyles = ({ theme: { colors } }) => css`
         width: unset;
         background: unset;
         color: ${colors.pelorous};
-        opacity: 1;
+        opacity: 0.8;
         box-shadow: none;
         transition: all 0.3s ease;
 
         /* Desktop-only Styles */
-        /* Background */
-        &::before {
-            opacity: 0.6;
-            transform: scale(1);
-        }
-
         /* Animated Underline */
         &::after {
             background: ${colors.pelorous};
@@ -199,12 +177,8 @@ const desktopLinkStyles = ({ theme: { colors } }) => css`
             &:hover {
                 width: unset;
                 color: ${colors.pelorous};
-                opacity: 0.8;
+                opacity: 1;
                 box-shadow: unset;
-
-                &::before {
-                    opacity: 0.4;
-                }
 
                 &::after {
                     background: ${colors.pelorous};
@@ -219,12 +193,6 @@ const desktopLinkStyles = ({ theme: { colors } }) => css`
             width: unset;
             color: ${colors.lightCharcoal};
             opacity: 0.7;
-
-            /* Background on ::before pseudo-element */
-            &::before {
-                opacity: 0.4;
-                transform: scale(1);
-            }
 
             /* Animate Underline on ::after pseudo-element */
             &::after {

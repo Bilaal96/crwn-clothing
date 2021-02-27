@@ -7,7 +7,10 @@ import { addItem } from '../../redux/cart/cart.actions';
 // Components
 import CustomButton from '../custom-button/custom-button.component';
 
-import './collection-item.styles.scss';
+// Styled Components
+import * as SC from './collection-item.styles';
+
+// import './collection-item.styles.scss';
 
 const CollectionItem = (props) => {
     const { item } = props;
@@ -20,19 +23,25 @@ const CollectionItem = (props) => {
     }, [dispatch, item]);
 
     return (
-        <div className="collection-item">
-            <div
+        <SC.CollectionItem className="collection-item">
+            <SC.ItemImage
                 className="image"
-                style={{ backgroundImage: `url(${imageUrl})` }}
-            />
-            <div className="collection-footer">
-                <span className="name">{name}</span>
-                <span className="price">${price}</span>
-            </div>
-            <CustomButton onClick={dispatchAddItem} $styleType="inverted">
-                Add To Cart
-            </CustomButton>
-        </div>
+                imageUrl={imageUrl}
+                title={`Image of ${name}`}
+            >
+                <CustomButton onClick={dispatchAddItem} $styleType="inverted">
+                    Add To Cart
+                </CustomButton>
+            </SC.ItemImage>
+            <SC.ItemFooter className="collection-footer">
+                <SC.ItemName className="name" title={name}>
+                    {name}
+                </SC.ItemName>
+                <SC.ItemPrice className="price" title={`$${price}`}>
+                    ${price}
+                </SC.ItemPrice>
+            </SC.ItemFooter>
+        </SC.CollectionItem>
     );
 };
 

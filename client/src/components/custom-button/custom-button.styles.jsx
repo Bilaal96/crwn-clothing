@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import mediaQuery from '../../theme/media-queries';
 
 // Default styles for CustomButton
 // -- returned if no $styleType prop passed to CustomButton
@@ -20,6 +21,9 @@ const defaultButtonStyles = ({ theme: { colors } }) => css`
 `;
 
 // Styles rendered based on props.$styleType
+// -- $styleType = "col-item"
+const collectionItemButtonStyles = ({ theme: { colors } }) => css``;
+
 // -- $styleType = "inverted"
 const invertedButtonStyles = ({ theme: { colors } }) => css`
     background-color: ${colors.white};
@@ -68,6 +72,8 @@ const getButtonStyles = (props) => {
     switch (props.$styleType) {
         case 'inverted':
             return invertedButtonStyles;
+        case 'col-item':
+            return collectionItemButtonStyles(props);
         case 'googleSignIn':
             return googleSignInStyles(props);
         case 'cartCheckout':

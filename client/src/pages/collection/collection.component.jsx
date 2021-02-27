@@ -7,7 +7,11 @@ import { selectSingleCollection } from '../../redux/shop/shop.selectors';
 // Components
 import CollectionItem from '../../components/collection-item/collection-item.component';
 
-import './collection.styles.scss';
+// Styled Components
+import PageHeading from '../../components/styled/page-heading';
+import * as SC from './collection.styles';
+
+// import './collection.styles.scss';
 
 const CollectionPage = (props) => {
     // Retrieval of a SINGLE collection relies on props.match
@@ -20,14 +24,14 @@ const CollectionPage = (props) => {
     const { title, items } = collection;
 
     return (
-        <div className="collection-page">
-            <h2 className="title">{title.toUpperCase()}</h2>
-            <div className="items">
+        <SC.CollectionPage className="collection-page">
+            <PageHeading className="title">{title.toUpperCase()}</PageHeading>
+            <SC.CollectionItemsGrid className="items">
                 {items.map((item) => (
                     <CollectionItem key={item.id} item={item} />
                 ))}
-            </div>
-        </div>
+            </SC.CollectionItemsGrid>
+        </SC.CollectionPage>
     );
 };
 

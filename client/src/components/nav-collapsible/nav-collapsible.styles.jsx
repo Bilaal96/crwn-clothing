@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { mediaQuery } from '../../config/theme';
+import styled from 'styled-components/macro';
+import mediaQuery from '../../theme/media-queries';
 
 /**
  * ----- NavContainer -----
@@ -26,13 +26,27 @@ export const NavContainer = styled.nav`
     font-weight: 600;
 
     /* Fallback Background Colour */
-    background: ${({ theme }) => theme.colors.mistyBlue};
-    /* vertical gradient - top - mistyBlue to lightCharcaol - bottom */
+    background: ${({ theme }) => theme.colors.tealGreen};
+    /* Vertical Gradient */
     background: linear-gradient(
         180deg,
-        rgba(47, 80, 97, 1) 40%,
-        rgba(91, 117, 134, 1) 100%
+        rgba(66, 151, 160, 0.9) 0%,
+        /* tealGreen */ rgba(248, 131, 121, 0.9) 56%,
+        /* coralPink */ rgba(255, 127, 80, 0.9) 100% /* coral */
     );
+
+    /** 
+     * #020024 | mistyBlue
+     * #f88379 | coralPink 
+     * #ff7f50 | coral
+     */
+    /* background: rgb(47, 80, 97);
+    background: linear-gradient(
+        180deg,
+        rgba(47, 80, 97, 0.9) 0%,
+        rgba(248, 131, 121, 0.9) 56%,
+        rgba(255, 127, 80, 0.9) 100%
+    ); */
 
     /* SideNav Transition: slide-in from left of viewport */
     transform-origin: left;

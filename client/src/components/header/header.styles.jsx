@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 import { ReactComponent as SvgCrown } from '../../assets/crown.svg';
-import { mediaQuery } from '../../config/theme';
+import mediaQuery from '../../theme/media-queries';
 
 /** 
  * NOTE: PageWrapper's padding property must also be 

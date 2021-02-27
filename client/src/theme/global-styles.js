@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components/macro';
 
 const GlobalStyle = createGlobalStyle`
  /* CSS Reset */
@@ -6,6 +6,11 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+
+        /* Scrollbar Styles */
+        /* Firefox */
+        scrollbar-color: #ccc #eee;
+        scrollbar-width: thin;
     }
 
     :root {
@@ -24,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
         -moz-osx-font-smoothing: grayscale;
         font-family: 'Open Sans', sans-serif;
 
-        ${'' /* Fallback background */}
+        ${'' /* Fallback background (if gradient is used) */}
         background: ${({ theme }) => theme.colors.ivory};
 
          /* ----- Experimental ----- */

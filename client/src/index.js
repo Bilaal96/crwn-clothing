@@ -12,8 +12,8 @@ import App from './App';
 
 // Styled Components
 import { ThemeProvider } from 'styled-components';
-import theme from './config/theme';
-import GlobalStyle from './global-styles.js';
+import theme from './theme';
+import GlobalStyle from './theme/global-styles.js';
 
 ReactDOM.render(
     <React.StrictMode>

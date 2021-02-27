@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 // Overlay ensures that spinner is always centered
 export const SpinnerOverlay = styled.div`
