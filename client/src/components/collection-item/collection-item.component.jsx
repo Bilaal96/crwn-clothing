@@ -10,8 +10,6 @@ import CustomButton from '../custom-button/custom-button.component';
 // Styled Components
 import * as SC from './collection-item.styles';
 
-// import './collection-item.styles.scss';
-
 const CollectionItem = (props) => {
     const { item } = props;
     const { name, price, imageUrl } = item;

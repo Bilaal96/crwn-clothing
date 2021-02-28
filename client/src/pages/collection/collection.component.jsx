@@ -11,8 +11,6 @@ import CollectionItem from '../../components/collection-item/collection-item.com
 import PageHeading from '../../components/styled/page-heading';
 import * as SC from './collection.styles';
 
-// import './collection.styles.scss';
-
 const CollectionPage = (props) => {
     // Retrieval of a SINGLE collection relies on props.match
     // -- useSelector() does not have direct access to props like mapState does
