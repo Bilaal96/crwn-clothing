@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 
 // Actions
 import {
-    googleSignInStart,
     emailSignInStart,
+    googleSignInStart,
 } from '../../redux/user/user.actions';
 
 // Components

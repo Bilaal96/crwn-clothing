@@ -24,7 +24,8 @@ import { clearFocusAfterInteraction } from './utils/clear-focus-after-interactio
 import { stopAllAnimationsOnResize } from './utils/stop-animation';
 
 // Styled Components
-import * as SC from './App.styles';
+import PageWrapper from './components/styled/page-wrapper';
+import PageOverlay from './components/styled/page-overlay';
 
 const App = () => {
     const currentUser = useSelector(selectCurrentUser);
@@ -62,7 +63,7 @@ const App = () => {
         <>
             <Header />
 
-            <SC.PageWrapper>
+            <PageWrapper>
                 <Switch>
                     <Route exact path="/" component={HomePage} />
                     <Route path="/shop" component={ShopPage} />
@@ -79,10 +80,10 @@ const App = () => {
                         }
                     />
                 </Switch>
-            </SC.PageWrapper>
+            </PageWrapper>
 
             {/* Render PageOverlay when Side Nav is OPEN */}
-            {isSideNavOpen && <SC.PageOverlay onClick={dispatchCloseSideNav} />}
+            {isSideNavOpen && <PageOverlay onClick={dispatchCloseSideNav} />}
         </>
     );
 };

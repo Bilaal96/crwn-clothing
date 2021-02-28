@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import mediaQuery from './theme/media-queries';
+import mediaQuery from '../../theme/media-queries';
 
 /**
  * PageWrapper aligns the MAIN content for a page
@@ -12,7 +12,7 @@ import mediaQuery from './theme/media-queries';
  
  * NOTE: 1 rem = 10px
  */
-export const PageWrapper = styled.main`
+const PageWrapper = styled.main`
     margin: 9rem 2rem 2rem;
 
     ${mediaQuery.tablet} {
@@ -31,17 +31,4 @@ export const PageWrapper = styled.main`
     }
 `;
 
-// Conditionally rendered when SideNav is toggled
-export const PageOverlay = styled.div`
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: -10rem;
-    left: 0;
-    background-color: ${({ theme }) => theme.colors.overlay};
-    cursor: pointer;
-
-    ${mediaQuery.desktop} {
-        display: none;
-    }
-`;
+export default PageWrapper;
