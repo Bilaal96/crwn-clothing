@@ -36,7 +36,7 @@ const NavCollapsible = () => {
     /** --
      * init sign-out process
      * on succesful sign-out, history is used to 
-       redirect to /signin route (see user.sagas.js)
+       redirect to /sign-in route (see user.sagas.js)
      */
     const dispatchSignOut = (e) => dispatch(signOutStart(history));
     return (
@@ -66,7 +66,7 @@ const NavCollapsible = () => {
                     </NavItem>
                 ) : (
                     <NavItem
-                        to="/signin"
+                        to="/sign-in"
                         onClick={dispatchCloseSideNav}
                         $signIn
                     >

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 
 // Components
@@ -10,21 +10,6 @@ import * as SC from './collection-preview.styles';
 const CollectionPreview = ({ routeName, title, items }) => {
     const match = useRouteMatch();
     const previewItemsLimit = 4;
-
-    // ! Experimental - horizontal scroll w/Mousewheel
-    // useEffect(() => {
-    //     const previewItems = document.querySelector('.preview-items');
-
-    //     const horizontalScroll = (e) => {
-    //         if (e.deltaY > 0) previewItems.scrollLeft += 5;
-    //         else previewItems.scrollLeft -= 5;
-    //     };
-
-    //     previewItems.addEventListener('wheel', horizontalScroll);
-
-    //     return () =>
-    //         previewItems.removeEventListener('wheel', horizontalScroll);
-    // }, []);
 
     return (
         <SC.CollectionPreview>

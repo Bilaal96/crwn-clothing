@@ -13,7 +13,9 @@ import { selectIsSideNavOpen } from './redux/nav/nav.selectors';
 // Pages
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
-import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+// import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import SignInPage from './pages/sign-in/sign-in.component';
+import SignUpPage from './pages/sign-up/sign-up.component';
 import CheckoutPage from './pages/checkout/checkout.component';
 
 // Components
@@ -70,13 +72,16 @@ const App = () => {
                     <Route exact path="/checkout" component={CheckoutPage} />
                     <Route
                         exact
-                        path="/signin"
+                        path="/sign-in"
                         render={() =>
-                            currentUser ? (
-                                <Redirect to="/" />
-                            ) : (
-                                <SignInAndSignUpPage />
-                            )
+                            currentUser ? <Redirect to="/" /> : <SignInPage />
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/sign-up"
+                        render={() =>
+                            currentUser ? <Redirect to="/" /> : <SignUpPage />
                         }
                     />
                 </Switch>

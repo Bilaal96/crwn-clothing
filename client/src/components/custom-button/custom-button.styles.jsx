@@ -42,7 +42,8 @@ const googleSignInStyles = ({ theme: { colors } }) => css`
     background-color: ${colors.pelorous};
     color: ${colors.white};
     border: 0.1rem solid transparent;
-    font-size: 1.1rem; /* FIXME temporary fix */
+    width: 100%;
+    ${'' /* font-size: 1.1rem; */} /* FIXME temporary fix */
 
     &:hover {
         background-color: ${colors.white};

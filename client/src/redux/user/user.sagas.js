@@ -69,6 +69,9 @@ export function* signInWithEmail({ payload: { email, password } }) {
         // Catches any errors thrown in try-block
         // Dispatch SIGN_IN_FAILURE
         yield put(signInFailure(error));
+        alert(
+            'Something went wrong :(\nPlease enter a valid email and password'
+        );
     }
 }
 
@@ -92,7 +95,7 @@ export function* signOut({ payload: { history } }) {
     try {
         yield auth.signOut();
         yield put(signOutSuccess());
-        history.push('/signin');
+        history.push('/sign-in');
     } catch (error) {
         yield put(signOutFailure(error));
     }

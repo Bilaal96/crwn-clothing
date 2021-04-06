@@ -23,7 +23,7 @@ const mobileLinkStyles = ({ theme: { colors } }) => css`
     padding: 0.8rem 1.2rem;
     margin: 1.2rem 0rem;
     font-size: 1.6rem;
-    border-radius: 0.4rem;
+    border-radius: 0.3rem;
     color: ${colors.ivory};
     background: ${colors.mistyBlue};
 

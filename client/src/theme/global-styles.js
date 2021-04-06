@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components/macro';
 
 const GlobalStyle = createGlobalStyle`
- /* CSS Reset */
+    /* CSS Reset */
     * {
         box-sizing: border-box;
         margin: 0;
@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
         ${'' /* font-size: 16px; */}
     }
 
+    ${'' /* REVIEW use of wf-loading className */}
     html.wf-loading * {
         opacity: 0;
     }
