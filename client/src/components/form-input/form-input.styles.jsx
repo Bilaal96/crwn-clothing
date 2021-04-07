@@ -44,7 +44,7 @@ export const FormInput = styled.input`
 
     /* Replace Google auto-complete background-color */
     &:-webkit-autofill {
-        /* box-shadow: 0 0 0 30px white inset; */
+        box-shadow: 0 0 0 30px white inset;
         -webkit-box-shadow: 0 0 0 30px white inset;
     }
 

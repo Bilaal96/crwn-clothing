@@ -23,7 +23,7 @@ export const ContentBox = styled.div`
     padding: 1.6rem;
     border-radius: 0.3rem;
     flex: 1;
-    box-shadow: 0 0 1.2rem 0.1rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0.8rem 0.1rem rgba(0, 0, 0, 0.1);
 
     p {
         margin-bottom: 1.6rem;
@@ -36,7 +36,7 @@ export const ContentBox = styled.div`
     ${mediaQuery.laptop} {
         width: 50%;
         padding: 3rem;
-        box-shadow: 0 0 1.2rem 0.1rem rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 0.8rem 0.1rem rgba(0, 0, 0, 0.1);
     }
 `;
 
