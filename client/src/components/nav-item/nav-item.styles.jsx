@@ -23,7 +23,7 @@ const mobileLinkStyles = ({ theme: { colors } }) => css`
     padding: 0.8rem 1.2rem;
     margin: 1.2rem 0rem;
     font-size: 1.6rem;
-    border-radius: 0.3rem;
+    border-radius: 0.2rem;
     color: ${colors.ivory};
     background: ${colors.mistyBlue};
 
@@ -76,10 +76,10 @@ const mobileLinkStyles = ({ theme: { colors } }) => css`
 `;
 
 const mobileSignInLinkStyles = ({ theme: { colors } }) => css`
-    background: ${colors.mediumSeaGreen};
+    background: ${colors.greenHaze};
 
     &.selected {
-        background: ${colors.mediumSeaGreen};
+        background: ${colors.greenHaze};
     }
 
     ${mediaQuery.hoverable} {
@@ -226,19 +226,19 @@ const desktopSignInLinkStyles = ({ theme: { colors } }) => css`
 
     /* Selected Sign-in Link */
     &.selected {
-        color: ${colors.mediumSeaGreen};
+        color: ${colors.greenHaze};
 
         &::after {
-            background: ${colors.mediumSeaGreen};
+            background: ${colors.greenHaze};
         }
 
         /* Override Mobile Hover Styles */
         ${mediaQuery.hoverable} {
             &:hover {
-                color: ${colors.mediumSeaGreen};
+                color: ${colors.greenHaze};
 
                 &::after {
-                    background: ${colors.mediumSeaGreen};
+                    background: ${colors.greenHaze};
                 }
             }
         }

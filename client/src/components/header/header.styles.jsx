@@ -10,7 +10,7 @@ import mediaQuery from '../../theme/media-queries';
 export const Header = styled.header`
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 50;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;

@@ -24,6 +24,10 @@ export const AuthFormWrapper = styled.div`
     button {
         width: 100%;
     }
+
+    /* button[type='submit'] {
+        background-color: ${({ theme }) => theme.colors.greenHaze};
+    } */
 `;
 
 export const AuthFormTitle = styled.h2`

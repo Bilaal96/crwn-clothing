@@ -9,7 +9,7 @@ import PageHeading from '../../components/styled/page-heading';
 import {
     ContentBoxContainer,
     ContentBox,
-    AuthFormBox,
+    MainContentBox,
 } from '../../components/styled/content-box';
 
 const SignInPage = () => {
@@ -18,9 +18,9 @@ const SignInPage = () => {
             <PageHeading>MY ACCOUNT</PageHeading>
 
             <ContentBoxContainer>
-                <AuthFormBox>
+                <MainContentBox>
                     <SignInForm />
-                </AuthFormBox>
+                </MainContentBox>
 
                 <ContentBox>
                     <SignInAside />

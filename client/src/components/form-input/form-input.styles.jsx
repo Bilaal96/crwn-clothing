@@ -3,10 +3,10 @@ import mediaQuery from '../../theme/media-queries';
 
 // Mixin - use to shrink label on focus & if input.value has length
 const shrinkLabel = css`
-    top: -1.2rem;
+    top: -1.6rem;
     left: 0rem;
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 1.4rem;
+
     color: ${({ theme }) => theme.colors.pelorous};
 `;
 
@@ -21,6 +21,7 @@ export const FormInputLabel = styled.label`
     left: 0.5rem;
     color: grey;
     font-size: 1.6rem;
+    font-weight: bold;
     pointer-events: none;
     transition: all 0.3s ease;
 
@@ -34,9 +35,9 @@ export const FormInput = styled.input`
     display: block;
     width: 100%;
     background: none;
-    color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.colors.charcoal};
     font-size: 1.8rem;
-    padding: 1rem 0.5rem;
+    padding: 1rem 0rem;
 
     border: none;
     border-radius: 0;
@@ -54,7 +55,8 @@ export const FormInput = styled.input`
 
     &:focus {
         outline: 0;
-        padding: 1rem 0.5rem 0.9rem;
+        padding: 1rem 0rem 0.9rem;
+        color: ${({ theme }) => theme.colors.black};
         border-bottom: 0.2rem solid ${({ theme }) => theme.colors.pelorous};
 
         /* Shrink label on input focus */

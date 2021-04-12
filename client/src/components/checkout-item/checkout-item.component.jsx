@@ -8,11 +8,13 @@ import {
     clearItemFromCart,
 } from '../../redux/cart/cart.actions';
 
-import './checkout-item.styles.scss';
+// Styled Components
+import * as SC from './checkout-item.styles';
 
 const CheckoutItem = (props) => {
     const { cartItem } = props;
     const { name, quantity, price, imageUrl } = cartItem;
+    const subTotal = quantity * price;
 
     const dispatch = useDispatch();
 
@@ -29,29 +31,56 @@ const CheckoutItem = (props) => {
     }, [dispatch, cartItem]);
 
     return (
-        <div className="checkout-item">
-            <div className="image-container">
+        <SC.CheckoutItem>
+            <SC.RemoveButtonContainer>
+                <SC.RemoveButton onClick={dispatchClearItem}>
+                    <SC.RemoveIcon>&#10005;</SC.RemoveIcon>
+                </SC.RemoveButton>
+            </SC.RemoveButtonContainer>
+
+            <SC.ImageContainer>
                 <img src={imageUrl} alt="item" />
-            </div>
+            </SC.ImageContainer>
 
-            <span className="name">{name}</span>
-            <span className="quantity">
-                <div className="arrow" onClick={dispatchRemoveItem}>
-                    &#10094;
-                </div>
-                <span className="value">{quantity}</span>
-                <div className="arrow" onClick={dispatchAddItem}>
-                    &#10095;
-                </div>
-            </span>
-            <span className="price">${price}</span>
+            <SC.ProductDetails>
+                <SC.Name>
+                    <SC.Label>Product:</SC.Label>
+                    <SC.Value>{name}</SC.Value>
+                </SC.Name>
 
-            <div className="remove-button-container">
-                <div className="remove-button" onClick={dispatchClearItem}>
-                    <span className="remove-icon">&#10005;</span>
-                </div>
-            </div>
-        </div>
+                <SC.SingleItemPrice className="price">
+                    <SC.Label>
+                        Price: <br />
+                        <span className="sub-label">(single item)</span>
+                    </SC.Label>
+                    <SC.Value>${price}</SC.Value>
+                </SC.SingleItemPrice>
+
+                <SC.Quantity>
+                    <SC.Label>Quantity:</SC.Label>
+                    <SC.Value>
+                        <span
+                            className="arrow arrow-left"
+                            onClick={dispatchRemoveItem}
+                        >
+                            &#10094;
+                        </span>
+                        <span className="item-count">{quantity}</span>
+                        <span
+                            className="arrow arrow-right"
+                            onClick={dispatchAddItem}
+                        >
+                            &#10095;
+                        </span>
+                    </SC.Value>
+                </SC.Quantity>
+
+                <SC.SubTotal>
+                    <SC.Label>Subtotal: </SC.Label>
+                    <SC.Value>${subTotal}</SC.Value>
+                </SC.SubTotal>
+            </SC.ProductDetails>
+        </SC.CheckoutItem>
     );
 };
 

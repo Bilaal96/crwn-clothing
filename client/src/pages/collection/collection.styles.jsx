@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 import mediaQuery from '../../theme/media-queries';
 
-export const CollectionPage = styled.main`
+export const CollectionPage = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;

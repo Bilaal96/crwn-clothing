@@ -12,15 +12,18 @@ const theme = {
         coralPink: '#F88379',
         dimGrey: '#5F5F5F', // ! NOT USED
         geraldine: '#EC7272', // washed out pink-red
+        greenHaze: '#009879',
         ivory: '#F4EAE6', // Page Background
         lightCharcoal: '#5B7586',
         mediumSeaGreen: '#3CB371',
         mistyBlue: '#2F5061', // rgba(47, 80, 97, 1)
         mistyBlueMedium: 'rgba(47, 80, 97, 0.8)',
         mistyBlueLight: 'rgba(47, 80, 97, 0.6)',
-        overlay: 'rgba(0, 0, 0, 0.6)',
+        overlay: 'rgba(0, 0, 0, 0.4)',
         pelorous: '#3191CA', // bright light blue
         tealGreen: '#4297A0',
+        warningBg: '#FFC0CB',
+        warningText: '#A64452',
         white: '#FFFFFF',
     },
     fontFamily: ['Open Sans', 'sans-serif'], // ! NOT USED

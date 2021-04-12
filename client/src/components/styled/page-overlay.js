@@ -10,6 +10,7 @@ const PageOverlay = styled.div`
     left: 0;
     background-color: ${({ theme }) => theme.colors.overlay};
     cursor: pointer;
+    z-index: 10;
 
     ${mediaQuery.desktop} {
         display: none;

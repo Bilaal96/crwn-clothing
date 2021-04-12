@@ -14,9 +14,15 @@ import mediaQuery from '../../theme/media-queries';
  */
 const PageWrapper = styled.main`
     margin: 9rem 2rem 2rem;
+    /* width: 90%;
+    position: absolute;
+    top: 7rem;
+    margin: 2rem 2rem 2rem; */
 
     ${mediaQuery.tablet} {
         margin: 11rem 4rem 3rem;
+        /* top: 8rem;
+        margin: 3rem 4rem 4rem; */
     }
 
     ${mediaQuery.laptop} {

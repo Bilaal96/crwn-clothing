@@ -2,7 +2,7 @@ export const clearFocusAfterInteraction = () => {
     const clearFocus = (e) => {
         // Ignore if event target is any of the following
         // -- form input
-        if (e.target.classList.contains('form-input')) return;
+        if (e.target.classList?.contains('form-input')) return;
 
         // Clear Focus
         if (

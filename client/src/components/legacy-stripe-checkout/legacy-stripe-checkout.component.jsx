@@ -2,6 +2,8 @@ import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 
+import CustomButton from '../custom-button/custom-button.component';
+
 const LegacyStripeCheckout = ({ price }) => {
     // Calc. price in cents - as Stripe handles cents
     const priceForStripe = price * 100;
@@ -48,7 +50,8 @@ const LegacyStripeCheckout = ({ price }) => {
             stripeKey={publishableKey}
         >
             {/* Render button with custom styles */}
-            <button className="custom-pay-btn">Pay Now</button>
+            {/* <button className="custom-pay-btn">Pay Now</button> */}
+            <CustomButton className="custom-pay-btn">Pay Now</CustomButton>
         </StripeCheckout>
     );
 };

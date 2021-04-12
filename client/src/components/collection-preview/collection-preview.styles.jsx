@@ -237,7 +237,7 @@ export const CollectionRouterLink = styled(Link)`
 export const CollectionName = styled.span`
     & span {
         color: ${({ theme }) => theme.colors.coral};
-        /* transition: color 0.2s ease; */
+        transition: color 0.2s ease;
 
         ${mediaQuery.hoverable} {
             ${CollectionRouterLink}:hover & {

@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 import mediaQuery from '../../theme/media-queries';
 
-export const ContentBoxContainer = styled.section`
+export const ContentBoxContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -11,7 +11,7 @@ export const ContentBoxContainer = styled.section`
     }
 
     ${mediaQuery.largeScreen} {
-        width: 80%;
+        width: 90%;
         margin: 0 auto;
     }
 `;
@@ -50,7 +50,10 @@ export const BoxHeading = styled.h2`
     text-align: center;
 `;
 
-export const AuthFormBox = styled(ContentBox)`
+// Use MainContentBox as primary-content container
+// Regular ContentBox acts as "aside"/secondary-content
+//  when paired with MainContentBox
+export const MainContentBox = styled(ContentBox)`
     margin: 0 0 1rem 0;
 
     ${mediaQuery.laptop} {
