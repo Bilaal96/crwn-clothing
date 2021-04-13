@@ -7,23 +7,29 @@ import SignUpAside from '../../components/sign-up-aside/sign-up-aside.component'
 // Styled Components
 import PageHeading from '../../components/styled/page-heading';
 import {
-    ContentBoxContainer,
+    ContentGrid,
+    ContentGridItem,
     ContentBox,
-    MainContentBox,
-} from '../../components/styled/content-box';
+} from '../../components/styled/content-grid';
 
 const SignUpPage = () => {
     return (
         <>
             <PageHeading>JOIN US</PageHeading>
-            <ContentBoxContainer>
-                <MainContentBox>
-                    <SignUpForm />
-                </MainContentBox>
-                <ContentBox>
-                    <SignUpAside />
-                </ContentBox>
-            </ContentBoxContainer>
+
+            <ContentGrid widthLg="90%">
+                <ContentGridItem colStart="1" colEnd="8">
+                    <ContentBox>
+                        <SignUpForm />
+                    </ContentBox>
+                </ContentGridItem>
+
+                <ContentGridItem colStart="8" colEnd="-1">
+                    <ContentBox>
+                        <SignUpAside />
+                    </ContentBox>
+                </ContentGridItem>
+            </ContentGrid>
         </>
     );
 };

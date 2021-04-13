@@ -49,7 +49,6 @@ export const ItemImage = styled.figure`
         &:hover {
             /* reduce opacity of image */
             opacity: 0.9;
-            /* box-shadow: 2px -2px 10px 2px rgba(0, 0, 0, 0.4); */
 
             /* Show button on hover */
             button {

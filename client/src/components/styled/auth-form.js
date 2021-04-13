@@ -27,6 +27,12 @@ export const AuthFormWrapper = styled.div`
 
     /* button[type='submit'] {
         background-color: ${({ theme }) => theme.colors.greenHaze};
+
+        &:hover {
+            background-color: ${({ theme }) => theme.colors.white};
+            color: ${({ theme }) => theme.colors.greenHaze};
+            border-color: ${({ theme }) => theme.colors.greenHaze};
+        }
     } */
 `;
 

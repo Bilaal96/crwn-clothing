@@ -42,8 +42,16 @@ export const SummaryHeader = styled.div`
 
 // Displayed when no items in Cart
 export const EmptyCheckout = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    ${mediaQuery.desktop} {
+        min-height: 300px;
+    }
+
     p {
-        font-size: 2.4rem;
+        font-size: clamp(1.8rem, 2vw, 2.4rem);
         margin: 3rem 0;
         letter-spacing: 0.2rem;
         text-align: center;

@@ -17,7 +17,6 @@ const CheckoutSummary = ({ cartItems, cartTotal }) => {
     const history = useHistory();
 
     return (
-        // CheckoutSummary currently has no styles
         <SC.CheckoutSummary>
             <SC.SummaryHeader>
                 <div className="summary-item-count">

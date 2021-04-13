@@ -30,7 +30,15 @@ const invertedButtonStyles = ({ theme: { colors } }) => css`
     color: ${colors.black};
     border: 0.1rem solid black;
 
-    &:hover {
+    ${mediaQuery.hoverable} {
+        &:hover {
+            background-color: ${colors.black};
+            color: ${colors.white};
+            border: 0.1rem solid transparent;
+        }
+    }
+
+    &:active {
         background-color: ${colors.black};
         color: ${colors.white};
         border: 0.1rem solid transparent;

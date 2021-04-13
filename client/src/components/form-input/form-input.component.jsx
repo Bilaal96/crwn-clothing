@@ -3,8 +3,6 @@ import React from 'react';
 // Styled Components
 import * as SC from './form-input.styles';
 
-// import './form-input.styles.scss';
-
 const FormInput = ({ handleChange, label, ...otherProps }) => (
     <SC.FormGoup className="form-group">
         <SC.FormInput

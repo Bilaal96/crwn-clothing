@@ -228,7 +228,7 @@ export const ImageContainer = styled.div`
     }
 
     ${mediaQuery.laptop} {
-        width: 70%;
+        width: 40%;
     }
 
     ${mediaQuery.desktop} {

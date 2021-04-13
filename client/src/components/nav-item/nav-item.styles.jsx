@@ -245,19 +245,21 @@ const desktopSignInLinkStyles = ({ theme: { colors } }) => css`
     }
 
     /* Hovered Sign-in Link */
-    &:hover {
-        background: unset;
-        color: ${colors.lightCharcoal};
+    ${mediaQuery.hoverable} {
+        &:hover {
+            background: unset;
+            color: ${colors.lightCharcoal};
 
-        &::after {
-            background: ${colors.lightCharcoal};
+            &::after {
+                background: ${colors.lightCharcoal};
+            }
         }
     }
 `;
 
 const desktopSignOutLinkStyles = ({ theme: { colors } }) => css`
     background: unset;
-    color: ${colors.lightCharcoal};
+    color: ${colors.geraldine};
 
     /* Hovered Sign-out Link */
     ${mediaQuery.hoverable} {

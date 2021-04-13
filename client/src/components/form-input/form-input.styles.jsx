@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components/macro';
-import mediaQuery from '../../theme/media-queries';
 
 // Mixin - use to shrink label on focus & if input.value has length
 const shrinkLabel = css`

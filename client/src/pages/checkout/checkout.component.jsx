@@ -12,10 +12,10 @@ import CheckoutAside from '../../components/checkout-aside/checkout-aside.compon
 // Styled Components
 import PageHeading from '../../components/styled/page-heading';
 import {
-    ContentBoxContainer,
+    ContentGrid,
+    ContentGridItem,
     ContentBox,
-    MainContentBox,
-} from '../../components/styled/content-box';
+} from '../../components/styled/content-grid';
 
 const CheckoutPage = () => {
     const cartItems = useSelector(selectCartItems);
@@ -24,17 +24,21 @@ const CheckoutPage = () => {
     return (
         <section className="checkout-page">
             <PageHeading>Checkout</PageHeading>
-            <ContentBoxContainer>
-                <MainContentBox>
-                    <CheckoutSummary
-                        cartItems={cartItems}
-                        cartTotal={cartTotal}
-                    />
-                </MainContentBox>
-                <ContentBox>
-                    <CheckoutAside cartTotal={cartTotal} />
-                </ContentBox>
-            </ContentBoxContainer>
+            <ContentGrid widthLg="90%">
+                <ContentGridItem colStart="1" colEnd="9">
+                    <ContentBox>
+                        <CheckoutSummary
+                            cartItems={cartItems}
+                            cartTotal={cartTotal}
+                        />
+                    </ContentBox>
+                </ContentGridItem>
+                <ContentGridItem colStart="9" colEnd="-1">
+                    <ContentBox maxContent>
+                        <CheckoutAside cartTotal={cartTotal} />
+                    </ContentBox>
+                </ContentGridItem>
+            </ContentGrid>
         </section>
     );
 };
