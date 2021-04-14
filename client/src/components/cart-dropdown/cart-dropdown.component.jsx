@@ -3,10 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // Actions
+// -- Cart
 import { toggleCartHidden } from '../../redux/cart/cart.actions';
+// -- Nav
+import { closeSideNav } from '../../redux/nav/nav.actions';
 
 // Selectors
+// -- Cart
 import { selectCartItems } from '../../redux/cart/cart.selectors';
+// -- Nav
+import { selectIsSideNavOpen } from '../../redux/nav/nav.selectors';
 
 // Components
 import CartItem from '../cart-item/cart-item.component';
@@ -17,6 +23,8 @@ import * as SC from './cart-dropdown.styles';
 
 const CartDropdown = () => {
     const cartItems = useSelector(selectCartItems);
+    const isSideNavOpen = useSelector(selectIsSideNavOpen);
+
     const dispatch = useDispatch();
 
     // react-router's history fn
@@ -64,7 +72,10 @@ const CartDropdown = () => {
             )}
             <CustomButton
                 className="cart-checkout-btn"
-                onClick={() => history.push('/checkout')}
+                onClick={() => {
+                    history.push('/checkout');
+                    isSideNavOpen && dispatch(closeSideNav());
+                }}
                 $styleType="cartCheckout"
             >
                 GO TO CHECKOUT
