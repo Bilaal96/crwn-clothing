@@ -10,6 +10,9 @@ import { store, persistor } from './redux/store';
 // App.js
 import App from './App';
 
+// Side Effect - scrolls to top when location.pathname changes
+import ScrollToTop from './components/scroll-to-top/scroll-to-top.component';
+
 // Styled Components
 import { ThemeProvider } from 'styled-components';
 import theme from './theme';
@@ -19,6 +22,7 @@ ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
             <BrowserRouter>
+                <ScrollToTop />
                 <PersistGate loading={null} persistor={persistor}>
                     <ThemeProvider theme={theme}>
                         <GlobalStyle />
