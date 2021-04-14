@@ -39,14 +39,6 @@ export const WarningHeader = styled.div`
         margin-bottom: 0rem;
     }
 
-    ${mediaQuery.laptop} {
-        flex-direction: column;
-
-        .info-icon-container {
-            align-self: flex-start;
-        }
-    }
-
     ${mediaQuery.desktop} {
         flex-direction: row;
     }

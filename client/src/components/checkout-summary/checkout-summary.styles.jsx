@@ -52,7 +52,7 @@ export const EmptyCheckout = styled.div`
 
     p {
         font-size: clamp(1.8rem, 2vw, 2.4rem);
-        margin: 3rem 0;
+        margin: 10rem 0;
         letter-spacing: 0.2rem;
         text-align: center;
     }
