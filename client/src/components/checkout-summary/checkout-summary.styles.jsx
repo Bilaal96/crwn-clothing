@@ -27,13 +27,19 @@ export const SummaryHeader = styled.div`
     background-color: ${({ theme }) => theme.colors.bahamaBlue};
     border-radius: 0.2rem;
 
+    span {
+        margin-right: 0.6rem;
+    }
+
     ${mediaQuery.tablet} {
         font-size: 1.6rem;
     }
 
     ${mediaQuery.laptop} {
         font-size: 1.8rem;
+    }
 
+    ${mediaQuery.desktop} {
         .summary-total {
             display: none;
         }
