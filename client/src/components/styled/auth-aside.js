@@ -2,10 +2,14 @@ import styled from 'styled-components/macro';
 import mediaQuery from '../../theme/media-queries';
 
 // Wrapper
-export const SignInAside = styled.div`
+export const AuthAside = styled.div`
     display: grid;
     gap: 1rem;
     height: 100%;
+
+    &.sign-up-aside {
+        height: max-content;
+    }
 
     button {
         align-self: flex-end;
@@ -53,8 +57,7 @@ export const CtaList = styled.ul`
 export const CtaListItem = styled.li`
     display: flex;
     flex-direction: row;
-
-    margin: 0 0 2rem 1rem;
+    margin: 0 0 3rem 2rem;
 `;
 
 export const CtaIcon = styled.div`
@@ -63,21 +66,32 @@ export const CtaIcon = styled.div`
     margin: 0 2rem 1rem 0;
 `;
 
-export const TrendsettersIcon = styled(CtaIcon)`
+export const ClothesIcon = styled(CtaIcon)`
     position: relative;
 
-    .dress {
+    .dress,
+    .trench-coat {
         position: absolute;
-        width: 100%;
-        top: -1rem;
-        left: -1.5rem;
+        width: 110%;
+        bottom: 0.5rem;
+        right: -1rem;
     }
 
-    .hoodie {
+    .trench-coat {
+        width: 100%;
+        right: -0.5rem;
+    }
+
+    .hoodie,
+    .puffer-jacket {
         position: absolute;
         width: 100%;
-        top: 0rem;
-        left: 0rem;
+        bottom: -0.5rem;
+        right: 1rem;
+    }
+
+    .puffer-jacket {
+        right: 1.5rem;
     }
 `;
 

@@ -10,13 +10,13 @@ import { ReactComponent as GoogleSvg } from '../../assets/google-logo.svg';
 import { ReactComponent as MailSvg } from '../../assets/mail.svg';
 
 // Styled Components
-import * as SC from './sign-in-aside.styles';
+import * as SC from '../styled/auth-aside';
 
 const SignInAside = () => {
     const history = useHistory();
 
     return (
-        <SC.SignInAside>
+        <SC.AuthAside className="sign-in-aside">
             <SC.Heading>
                 New to CRWN Clothing?
                 <SC.SubHeading>
@@ -26,16 +26,17 @@ const SignInAside = () => {
 
             <SC.CtaList>
                 <SC.CtaListItem>
-                    <SC.TrendsettersIcon>
+                    <SC.ClothesIcon>
                         <DressSvg className="dress" />
                         <HoodieSvg className="hoodie" />
-                    </SC.TrendsettersIcon>
+                    </SC.ClothesIcon>
 
                     <SC.CtaText>
                         <h3>Trendsetters</h3>
                         <p>Stay up to date with the latest trends</p>
                     </SC.CtaText>
                 </SC.CtaListItem>
+
                 <SC.CtaListItem>
                     <SC.CtaIcon>
                         <GoogleSvg />
@@ -48,6 +49,7 @@ const SignInAside = () => {
                         </p>
                     </SC.CtaText>
                 </SC.CtaListItem>
+
                 <SC.CtaListItem>
                     <SC.CtaIcon>
                         <MailSvg />
@@ -56,8 +58,8 @@ const SignInAside = () => {
                     <SC.CtaText>
                         <h3>Email</h3>
                         <p>
-                            Or Register & Sign-in with an email account by
-                            clicking the button below
+                            Or Register with an email account by clicking the
+                            button below
                         </p>
                     </SC.CtaText>
                 </SC.CtaListItem>
@@ -66,7 +68,7 @@ const SignInAside = () => {
             <CustomButton onClick={() => history.push('/sign-up')}>
                 CREATE AN ACCOUNT
             </CustomButton>
-        </SC.SignInAside>
+        </SC.AuthAside>
     );
 };
 
