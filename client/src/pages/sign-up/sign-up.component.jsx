@@ -14,7 +14,7 @@ import {
 
 const SignUpPage = () => {
     return (
-        <>
+        <section className="sign-up">
             <PageHeading>JOIN US</PageHeading>
 
             <ContentGrid widthLg="90%">
@@ -30,7 +30,7 @@ const SignUpPage = () => {
                     </ContentBox>
                 </ContentGridItem>
             </ContentGrid>
-        </>
+        </section>
     );
 };
 

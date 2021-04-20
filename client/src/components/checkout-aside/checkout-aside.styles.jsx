@@ -86,22 +86,3 @@ export const TotalPrice = styled.div`
         margin-right: 0.4rem;
     }
 `;
-
-// Stripe Payment Button
-export const PayButtonContainer = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 2rem;
-    width: 100%;
-
-    button.custom-pay-btn {
-        width: 100%;
-        background-color: ${({ theme }) => theme.colors.pelorous};
-
-        &:hover {
-            color: ${({ theme }) => theme.colors.pelorous};
-            background-color: ${({ theme }) => theme.colors.white};
-            border-color: ${({ theme }) => theme.colors.pelorous};
-        }
-    }
-`;

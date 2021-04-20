@@ -1,6 +1,8 @@
 import styled from 'styled-components/macro';
 import mediaQuery from '../../theme/media-queries';
 
+import { Button } from '../styled/button';
+
 export const CartDropdown = styled.div`
     position: absolute;
     top: 6.5rem;
@@ -43,11 +45,6 @@ export const CartDropdown = styled.div`
         border-top: none; /* Control vertical position */
         border-bottom: 2rem solid ${({ theme }) => theme.colors.lightCharcoal};
         border-bottom: 2rem solid white;
-    }
-
-    button {
-        height: 14%;
-        margin-top: 1.5rem;
     }
 
     ${mediaQuery.tablet} {
@@ -110,6 +107,37 @@ export const CartEmptyMessage = styled.span`
     justify-content: center;
     align-items: center;
     font-size: 1.6rem;
-    font-weight: bold;
+    font-weight: 600;
     letter-spacing: 0.15rem;
+`;
+
+export const CheckoutButton = styled(Button)`
+    background-color: ${({ theme }) => theme.colors.coral};
+    color: ${({ theme }) => theme.colors.white};
+
+    opacity: 0.9;
+    height: 14%;
+    margin-top: 1.5rem;
+
+    ${mediaQuery.hoverable} {
+        &:hover {
+            background-color: white;
+            color: ${({ theme }) => theme.colors.bahamaBlue};
+            border: 0.2rem solid ${({ theme }) => theme.colors.bahamaBlue};
+
+            opacity: 0.8;
+
+            /* Hide focus on click */
+            &:focus {
+                box-shadow: none;
+            }
+        }
+    }
+
+    &:active {
+        background-color: ${({ theme }) => theme.colors.bahamaBlue};
+        color: ${({ theme }) => theme.colors.white};
+
+        opacity: 0.9;
+    }
 `;

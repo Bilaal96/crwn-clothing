@@ -7,10 +7,10 @@ import { selectCartItemsCount } from '../../redux/cart/cart.selectors';
 
 // Components
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
-import CustomButton from '../custom-button/custom-button.component';
 
 // Styled Components
 import * as SC from './checkout-summary.styles';
+import { ButtonOutlined } from '../styled/button';
 
 const CheckoutSummary = ({ cartItems, cartTotal }) => {
     const cartItemsCount = useSelector(selectCartItemsCount);
@@ -19,13 +19,14 @@ const CheckoutSummary = ({ cartItems, cartTotal }) => {
     return (
         <SC.CheckoutSummary>
             <SC.SummaryHeader>
-                <div className="summary-item-count">
-                    <span>No. of Items in cart: </span>
-                    {cartItemsCount}
+                <div className="checkout-item-count">
+                    <span className="label">Items in cart: </span>
+                    <span className="value">{cartItemsCount}</span>
                 </div>
 
-                <div className="summary-total">
-                    <span>Total: </span>${cartTotal}
+                <div className="checkout-total">
+                    <span className="label">Total: </span>
+                    <span className="value">${cartTotal}</span>
                 </div>
             </SC.SummaryHeader>
 
@@ -36,12 +37,12 @@ const CheckoutSummary = ({ cartItems, cartTotal }) => {
             ) : (
                 <SC.EmptyCheckout>
                     <p>Your cart is empty</p>
-                    <CustomButton
+                    <ButtonOutlined
                         onClick={() => history.push('/shop')}
-                        $styleType="inverted"
+                        extend
                     >
                         Visit Shop
-                    </CustomButton>
+                    </ButtonOutlined>
                 </SC.EmptyCheckout>
             )}
         </SC.CheckoutSummary>

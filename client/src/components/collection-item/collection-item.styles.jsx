@@ -1,6 +1,8 @@
 import styled from 'styled-components/macro';
 import mediaQuery from '../../theme/media-queries';
 
+import { ButtonOutlined } from '../styled/button';
+
 export const CollectionItem = styled.div`
     display: flex;
     flex-direction: column;
@@ -11,6 +13,28 @@ export const CollectionItem = styled.div`
     width: 100%;
     height: 100%;
     transition: all 0.2s ease;
+`;
+
+export const AddToCartButton = styled(ButtonOutlined)`
+    position: absolute;
+    bottom: 5%;
+    min-width: 80%;
+    max-height: 4rem;
+    padding: 0.6rem;
+    font-size: 1.2rem;
+    border-width: 0.1rem;
+
+    /* Hoverable Devices */
+    ${mediaQuery.hoverable} {
+        /* Hide button by default */
+        /* Revealed on ItemImage:hover  */
+        opacity: 0;
+        transition: all 0.2s ease;
+
+        &:focus {
+            opacity: 1;
+        }
+    }
 `;
 
 export const ItemImage = styled.figure`
@@ -27,31 +51,15 @@ export const ItemImage = styled.figure`
     background-position: center;
     border-radius: 0.3rem;
 
-    /* button styles */
-    button {
-        position: absolute;
-        bottom: 5%;
-        min-width: 80%;
-        max-height: 4rem;
-        padding: 0.6rem;
-        font-size: 1.2rem;
-    }
-
     /* Hoverable Devices */
     ${mediaQuery.hoverable} {
-        /* Hide button by default*/
-        button {
-            opacity: 0;
-            transition: all 0.2s ease;
-        }
-
         /* on hover */
         &:hover {
             /* reduce opacity of image */
             opacity: 0.9;
 
             /* Show button on hover */
-            button {
+            ${AddToCartButton} {
                 opacity: 1;
             }
         }
@@ -105,7 +113,7 @@ export const ItemName = styled.span`
 `;
 
 export const ItemPrice = styled.span`
-    color: ${({ theme }) => theme.colors.tealGreen};
+    color: ${({ theme }) => theme.colors.greenHaze};
     font-size: 1.6rem;
     font-weight: 700;
     letter-spacing: 0.2rem;

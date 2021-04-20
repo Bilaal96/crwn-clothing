@@ -46,9 +46,8 @@ const CheckoutAside = ({ cartTotal }) => {
                 <span className="value">${cartTotal}</span>
             </SC.TotalPrice>
 
-            <SC.PayButtonContainer>
-                {!!cartTotal && <LegacyStripeCheckout price={cartTotal} />}
-            </SC.PayButtonContainer>
+            {/* Stripe Payment Button */}
+            <LegacyStripeCheckout price={cartTotal} />
         </>
     );
 };

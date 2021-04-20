@@ -9,11 +9,11 @@ import {
 
 // Components
 import FormInput from '../form-input/form-input.component';
-import CustomButton from '../custom-button/custom-button.component';
 import Divider from '../divider/divider.component';
 
 // Styled Components
 import * as SC from '../styled/auth-form';
+import { Button } from '../styled/button';
 
 const SignInForm = () => {
     // Set Sign-in Form Input Values
@@ -76,8 +76,10 @@ const SignInForm = () => {
                             value={password}
                             required
                         />
-                        <div className="btns-container">
-                            <CustomButton type="submit">Sign In</CustomButton>
+                        <div className="buttons-container">
+                            <Button type="submit" primary="greenHaze" extend>
+                                Sign In
+                            </Button>
 
                             <Divider
                                 content="OR"
@@ -85,13 +87,13 @@ const SignInForm = () => {
                                 spacingY="4rem"
                             />
 
-                            <CustomButton
-                                type="button"
+                            <Button
                                 onClick={dispatchGoogleSignInStart}
-                                $styleType="googleSignIn"
+                                primary="pelorous"
+                                extend
                             >
                                 Sign In With Google
-                            </CustomButton>
+                            </Button>
                         </div>
                     </fieldset>
                 </form>

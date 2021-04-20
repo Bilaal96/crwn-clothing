@@ -23,17 +23,6 @@ const SignUpAside = () => {
 
             <SC.CtaList>
                 <SC.CtaListItem>
-                    <SC.CtaIcon>
-                        <DeliverySvg />
-                    </SC.CtaIcon>
-
-                    <SC.CtaText>
-                        <h3>Delivery Perks</h3>
-                        <p>Free standard delivery when you spend £20 or more</p>
-                    </SC.CtaText>
-                </SC.CtaListItem>
-
-                <SC.CtaListItem>
                     <SC.ClothesIcon>
                         <TrenchCoatSvg className="trench-coat" />
                         <PufferJacketSvg className="puffer-jacket" />
@@ -53,6 +42,17 @@ const SignUpAside = () => {
                     <SC.CtaText>
                         <h3>Promotional Offers</h3>
                         <p>Receive our best special offers and promotions</p>
+                    </SC.CtaText>
+                </SC.CtaListItem>
+
+                <SC.CtaListItem>
+                    <SC.CtaIcon>
+                        <DeliverySvg />
+                    </SC.CtaIcon>
+
+                    <SC.CtaText>
+                        <h3>Delivery Perks</h3>
+                        <p>Free standard delivery when you spend £20 or more</p>
                     </SC.CtaText>
                 </SC.CtaListItem>
 

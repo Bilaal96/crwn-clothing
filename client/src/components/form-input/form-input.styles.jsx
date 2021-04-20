@@ -35,7 +35,9 @@ export const FormInput = styled.input`
     width: 100%;
     background: none;
     color: ${({ theme }) => theme.colors.charcoal};
+    font-family: inherit;
     font-size: 1.8rem;
+    letter-spacing: 0.1rem;
     padding: 1rem 0rem;
 
     border: none;

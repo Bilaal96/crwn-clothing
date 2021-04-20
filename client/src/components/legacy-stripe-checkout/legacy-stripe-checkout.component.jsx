@@ -2,7 +2,7 @@ import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 
-import CustomButton from '../custom-button/custom-button.component';
+import { Button } from '../styled/button';
 
 const LegacyStripeCheckout = ({ price }) => {
     // Calc. price in cents - as Stripe handles cents
@@ -33,26 +33,43 @@ const LegacyStripeCheckout = ({ price }) => {
             });
     };
 
-    // Legacy Stripe pop-up modal for payment handling
+    /**
+     *  Render disabled Button if price === 0
+     * Otherwise, render legacy StripeCheckout component
+        - a pop-up modal for payment handling 
+    */
     return (
-        <StripeCheckout
-            className="stripe-checkout"
-            ComponentClass="span"
-            label="Pay Now"
-            panelLabel="Pay"
-            name="CRWN Clothing Ltd."
-            billingAddress
-            shippingAddress
-            image="https://svgshare.com/i/CUz.svg"
-            description={`Your total is $${price}`}
-            amount={priceForStripe}
-            token={onToken}
-            stripeKey={publishableKey}
-        >
-            {/* Render button with custom styles */}
-            {/* <button className="custom-pay-btn">Pay Now</button> */}
-            <CustomButton className="custom-pay-btn">Pay Now</CustomButton>
-        </StripeCheckout>
+        <>
+            {(price === 0 && (
+                <Button margin="2rem 0 0" extend disabled>
+                    Pay Now
+                </Button>
+            )) || (
+                <StripeCheckout
+                    ComponentClass="div"
+                    className="stripe-checkout"
+                    label="Pay Now"
+                    panelLabel="Pay"
+                    name="CRWN Clothing Ltd."
+                    billingAddress
+                    shippingAddress
+                    image="https://svgshare.com/i/CUz.svg"
+                    description={`Your total is $${price}`}
+                    amount={priceForStripe}
+                    token={onToken}
+                    stripeKey={publishableKey}
+                >
+                    <Button
+                        className="stripe-checkout-btn"
+                        primary="pelorous"
+                        margin="2rem 0 0"
+                        extend
+                    >
+                        Pay Now
+                    </Button>
+                </StripeCheckout>
+            )}
+        </>
     );
 };
 

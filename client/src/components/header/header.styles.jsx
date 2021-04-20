@@ -34,9 +34,7 @@ export const Header = styled.header`
 `;
 
 // Wraps Logo in Link - adjust Logo size
-export const LogoLink = styled(Link).attrs((props) => ({
-    to: '/',
-}))`
+export const LogoLink = styled(Link)`
     flex: 0 0 4rem; /* prevent shrink */
     height: 3.2rem;
     transition: all 0.3s;

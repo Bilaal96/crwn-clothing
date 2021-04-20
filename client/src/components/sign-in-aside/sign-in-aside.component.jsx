@@ -2,7 +2,6 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 // Components
-import CustomButton from '../custom-button/custom-button.component';
 // -- SVG Icons
 import { ReactComponent as HoodieSvg } from '../../assets/hoodie.svg';
 import { ReactComponent as DressSvg } from '../../assets/dress.svg';
@@ -11,6 +10,7 @@ import { ReactComponent as MailSvg } from '../../assets/mail.svg';
 
 // Styled Components
 import * as SC from '../styled/auth-aside';
+import { ButtonOutlined } from '../styled/button.js';
 
 const SignInAside = () => {
     const history = useHistory();
@@ -18,7 +18,7 @@ const SignInAside = () => {
     return (
         <SC.AuthAside className="sign-in-aside">
             <SC.Heading>
-                New to CRWN Clothing?
+                New to Crown Clothing?
                 <SC.SubHeading>
                     Join now by signing in with Google or creating an account!
                 </SC.SubHeading>
@@ -65,9 +65,13 @@ const SignInAside = () => {
                 </SC.CtaListItem>
             </SC.CtaList>
 
-            <CustomButton onClick={() => history.push('/sign-up')}>
+            <ButtonOutlined
+                onClick={() => history.push('/sign-up')}
+                primary="coral"
+                extend
+            >
                 CREATE AN ACCOUNT
-            </CustomButton>
+            </ButtonOutlined>
         </SC.AuthAside>
     );
 };

@@ -20,24 +20,11 @@ export const AuthFormWrapper = styled.div`
     .form-input-label {
         font-weight: 600;
     }
-
-    button {
-        width: 100%;
-    }
-
-    /* button[type='submit'] {
-        background-color: ${({ theme }) => theme.colors.greenHaze};
-
-        &:hover {
-            background-color: ${({ theme }) => theme.colors.white};
-            color: ${({ theme }) => theme.colors.greenHaze};
-            border-color: ${({ theme }) => theme.colors.greenHaze};
-        }
-    } */
 `;
 
 export const AuthFormTitle = styled.h2`
     font-size: ${({ theme: { fontSize } }) => fontSize.h2.xs};
     color: ${({ theme }) => theme.colors.pelorous};
+    letter-spacing: 0.1rem;
     margin-bottom: 1rem;
 `;

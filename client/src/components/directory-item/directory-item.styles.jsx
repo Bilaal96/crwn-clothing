@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 import mediaQuery from '../../theme/media-queries';
 
 export const DirectoryItem = styled.a`

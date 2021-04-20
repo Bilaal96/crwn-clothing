@@ -13,22 +13,15 @@ export const AuthAside = styled.div`
 
     button {
         align-self: flex-end;
-        width: 100%;
-        background-color: ${({ theme }) => theme.colors.greenHaze};
-
-        &:hover {
-            background-color: ${({ theme }) => theme.colors.white};
-            color: ${({ theme }) => theme.colors.greenHaze};
-            border-color: ${({ theme }) => theme.colors.greenHaze};
-        }
     }
 `;
 
 // Heading
 export const Heading = styled.h2`
     font-size: 1.6rem;
-    color: ${({ theme }) => theme.colors.greenHaze};
+    color: ${({ theme }) => theme.colors.coral};
     text-align: center;
+    letter-spacing: 0.1rem;
 
     ${mediaQuery.laptop} {
         text-align: left;
@@ -58,6 +51,10 @@ export const CtaListItem = styled.li`
     display: flex;
     flex-direction: row;
     margin: 0 0 3rem 2rem;
+
+    &:last-child {
+        margin: 0 0 1.6rem 2rem;
+    }
 `;
 
 export const CtaIcon = styled.div`
@@ -100,7 +97,7 @@ export const CtaText = styled.span`
     font-size: clamp(1.2rem, 2vw, 1.4rem);
 
     h3 {
-        color: ${({ theme }) => theme.colors.coral};
+        color: ${({ theme }) => theme.colors.greenHaze};
     }
 
     p {

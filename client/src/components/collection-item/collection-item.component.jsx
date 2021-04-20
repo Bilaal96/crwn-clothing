@@ -4,9 +4,6 @@ import { useDispatch } from 'react-redux';
 // Actions
 import { addItem } from '../../redux/cart/cart.actions';
 
-// Components
-import CustomButton from '../custom-button/custom-button.component';
-
 // Styled Components
 import * as SC from './collection-item.styles';
 
@@ -27,9 +24,9 @@ const CollectionItem = (props) => {
                 imageUrl={imageUrl}
                 title={`Image of ${name}`}
             >
-                <CustomButton onClick={dispatchAddItem} $styleType="inverted">
+                <SC.AddToCartButton onClick={dispatchAddItem} focus="pelorous">
                     Add To Cart
-                </CustomButton>
+                </SC.AddToCartButton>
             </SC.ItemImage>
             <SC.ItemFooter className="collection-footer">
                 <SC.ItemName className="name" title={name}>

@@ -16,7 +16,6 @@ import { selectIsSideNavOpen } from '../../redux/nav/nav.selectors';
 
 // Components
 import CartItem from '../cart-item/cart-item.component';
-import CustomButton from '../custom-button/custom-button.component';
 
 // Styled Components
 import * as SC from './cart-dropdown.styles';
@@ -70,16 +69,15 @@ const CartDropdown = () => {
             ) : (
                 <SC.CartEmptyMessage>Your cart is empty</SC.CartEmptyMessage>
             )}
-            <CustomButton
+            <SC.CheckoutButton
                 className="cart-checkout-btn"
                 onClick={() => {
                     history.push('/checkout');
                     isSideNavOpen && dispatch(closeSideNav());
                 }}
-                $styleType="cartCheckout"
             >
                 GO TO CHECKOUT
-            </CustomButton>
+            </SC.CheckoutButton>
         </SC.CartDropdown>
     );
 };

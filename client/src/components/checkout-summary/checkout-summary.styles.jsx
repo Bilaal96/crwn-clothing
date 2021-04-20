@@ -21,14 +21,21 @@ export const SummaryHeader = styled.div`
     justify-content: space-between;
     width: 100%;
     padding: 1rem 1.4rem;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 600;
+    letter-spacing: 0.05rem;
     color: white;
     background-color: ${({ theme }) => theme.colors.bahamaBlue};
     border-radius: 0.2rem;
 
-    span {
-        margin-right: 0.6rem;
+    div.checkout-item-count > .label,
+    div.checkout-total > .label {
+        margin-right: 0.25em;
+    }
+
+    div.checkout-item-count > .value,
+    div.checkout-total > .value {
+        color: lightblue;
     }
 
     ${mediaQuery.tablet} {
@@ -40,7 +47,7 @@ export const SummaryHeader = styled.div`
     }
 
     ${mediaQuery.desktop} {
-        .summary-total {
+        .checkout-total {
             display: none;
         }
     }
@@ -53,18 +60,14 @@ export const EmptyCheckout = styled.div`
     justify-content: space-between;
 
     ${mediaQuery.desktop} {
-        min-height: 300px;
+        min-height: 303px;
     }
 
     p {
         font-size: clamp(1.8rem, 2vw, 2.4rem);
+        font-weight: 600;
         margin: 10rem 0;
         letter-spacing: 0.2rem;
         text-align: center;
-    }
-
-    button {
-        width: 100%;
-        height: 4rem;
     }
 `;

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 import { NavLink } from 'react-router-dom';
 import mediaQuery from '../../theme/media-queries';
 
@@ -96,18 +96,17 @@ const mobileSignInLinkStyles = ({ theme: { colors } }) => css`
 `;
 
 const mobileSignOutLinkStyles = ({ theme: { colors } }) => css`
-    background: ${colors.geraldine};
+    background: ${colors.hippiePink};
 
     ${mediaQuery.hoverable} {
         &:hover {
-            background: ${colors.lightCharcoal};
-            opacity: 1;
+            opacity: 0.85;
         }
     }
 
     /* Mobile Touch / Click feedback */
     &:active {
-        background: ${colors.coralPink};
+        background: ${colors.lightCharcoal};
     }
 `;
 
@@ -260,12 +259,14 @@ const desktopSignInLinkStyles = ({ theme: { colors } }) => css`
 const desktopSignOutLinkStyles = ({ theme: { colors } }) => css`
     background: unset;
     color: ${colors.geraldine};
+    opacity: 0.8;
 
     /* Hovered Sign-out Link */
     ${mediaQuery.hoverable} {
         &:hover {
             background: unset;
             color: ${colors.geraldine};
+            opacity: 1;
 
             &::after {
                 background: ${colors.geraldine};

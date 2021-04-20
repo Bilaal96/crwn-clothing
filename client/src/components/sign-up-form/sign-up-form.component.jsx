@@ -6,10 +6,10 @@ import { signUpStart } from '../../redux/user/user.actions';
 
 // Components
 import FormInput from '../form-input/form-input.component';
-import CustomButton from '../custom-button/custom-button.component';
 
 // Styled Components
 import { AuthFormWrapper, AuthFormTitle } from '../styled/auth-form';
+import { ButtonOutlined } from '../styled/button';
 
 const SignUpForm = () => {
     const [userCredentials, setUserCredentials] = useState({
@@ -88,8 +88,10 @@ const SignUpForm = () => {
                             required
                         />
 
-                        <div className="btns-container">
-                            <CustomButton type="submit">Register</CustomButton>
+                        <div className="buttons-container">
+                            <ButtonOutlined type="submit" extend>
+                                Register
+                            </ButtonOutlined>
                         </div>
                     </fieldset>
                 </form>

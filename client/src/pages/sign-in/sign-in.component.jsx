@@ -14,7 +14,7 @@ import {
 
 const SignInPage = () => {
     return (
-        <>
+        <section className="sign-in">
             <PageHeading>MY ACCOUNT</PageHeading>
 
             <ContentGrid widthLg="90%">
@@ -30,7 +30,7 @@ const SignInPage = () => {
                     </ContentBox>
                 </ContentGridItem>
             </ContentGrid>
-        </>
+        </section>
     );
 };
 

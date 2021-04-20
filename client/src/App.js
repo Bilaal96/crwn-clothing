@@ -40,7 +40,7 @@ const App = () => {
 
     // Event Listeners
     useEffect(() => {
-        // Clear HTML element focus on click & keyup
+        // Clear HTML element focus on click, keyup & drag
         const clearFocusEventListeners = clearFocusAfterInteraction();
 
         // Prevent animations on browser resize

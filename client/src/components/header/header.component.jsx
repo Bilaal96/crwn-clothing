@@ -1,4 +1,11 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+// Actions
+import { closeSideNav } from '../../redux/nav/nav.actions';
+
+// Selectors
+import { selectIsSideNavOpen } from '../../redux/nav/nav.selectors';
 
 // Components
 import SideNavSwitch from '../side-nav-switch/side-nav-switch.component';
@@ -9,9 +16,17 @@ import Cart from '../cart/cart.component';
 import * as SC from './header.styles';
 
 const Header = () => {
+    const isSideNavOpen = useSelector(selectIsSideNavOpen);
+    const dispatch = useDispatch();
+
     return (
         <SC.Header>
-            <SC.LogoLink>
+            <SC.LogoLink
+                to="/"
+                onClick={() => {
+                    isSideNavOpen && dispatch(closeSideNav());
+                }}
+            >
                 <SC.Logo />
             </SC.LogoLink>
 
