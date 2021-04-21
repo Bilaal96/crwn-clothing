@@ -9,7 +9,7 @@ import * as SC from './collection-preview.styles';
 
 const CollectionPreview = ({ routeName, title, items }) => {
     const match = useRouteMatch();
-    const previewItemsLimit = 4;
+    const previewItemsLimit = 5;
 
     return (
         <SC.CollectionPreview>

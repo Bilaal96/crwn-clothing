@@ -17,7 +17,7 @@ const SignUpPage = () => {
         <section className="sign-up">
             <PageHeading>JOIN US</PageHeading>
 
-            <ContentGrid widthLg="90%">
+            <ContentGrid>
                 <ContentGridItem colStart="1" colEnd="8">
                     <ContentBox>
                         <SignUpForm />

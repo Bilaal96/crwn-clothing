@@ -24,7 +24,7 @@ const CheckoutPage = () => {
     return (
         <section className="checkout-page">
             <PageHeading>Checkout</PageHeading>
-            <ContentGrid widthLg="90%">
+            <ContentGrid>
                 <ContentGridItem colStart="1" colEnd="9">
                     <ContentBox>
                         <CheckoutSummary

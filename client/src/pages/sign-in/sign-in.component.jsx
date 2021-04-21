@@ -17,7 +17,7 @@ const SignInPage = () => {
         <section className="sign-in">
             <PageHeading>MY ACCOUNT</PageHeading>
 
-            <ContentGrid widthLg="90%">
+            <ContentGrid>
                 <ContentGridItem colStart="1" colEnd="8">
                     <ContentBox>
                         <SignInForm />

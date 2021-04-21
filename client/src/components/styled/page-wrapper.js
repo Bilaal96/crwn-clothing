@@ -3,37 +3,40 @@ import mediaQuery from '../../theme/media-queries';
 
 /**
  * PageWrapper aligns the MAIN content for a page
- * As Header has fixed position, margin-top is needed to
-   push the Page Content below the Header
  
- * --- Calculating padding-top for PageWrapper ---
- * PageWrapper margin-top
-    = Header's height + PageWrapper's margin-bottom
- 
- * NOTE: 1 rem = 10px
- */
+ * Setting "max-width" allows us to center the 
+   content with "margin: 0 auto" --> ensuring 
+   there is plenty of left & right spacing  
+
+ * As Header has a fixed position, PageWrapper is 
+   positioned absolute (relative to the <body>) 
+ * This way we can use "top" property to position 
+   the Page Content below the Header
+
+ * NOTE: The value of "top" is EQUAL to the 
+   "height" of Header at each breakpoint
+*/
+
 const PageWrapper = styled.main`
-    margin: 9rem 2rem 2rem;
-    /* width: 90%;
+    max-width: 1400px;
+    height: max-content;
+
     position: absolute;
     top: 7rem;
-    margin: 2rem 2rem 2rem; */
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 2rem;
+    margin: 0 auto;
 
     ${mediaQuery.tablet} {
-        margin: 11rem 4rem 3rem;
-        /* top: 8rem;
-        margin: 3rem 4rem 4rem; */
+        top: 8rem;
+        padding: 3rem;
     }
 
-    ${mediaQuery.laptop} {
-        margin: 13rem 6.5rem 4rem;
-    }
     ${mediaQuery.desktop} {
-        /* margin: 13rem 6.5rem 4rem; */
-        margin: 13rem 8rem 4rem;
-    }
-    ${mediaQuery.largeScreen} {
-        margin: 13rem 16rem 4rem;
+        top: 9rem;
+        padding: 4rem;
     }
 `;
 

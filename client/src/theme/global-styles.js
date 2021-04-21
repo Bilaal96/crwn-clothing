@@ -26,32 +26,11 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+        background: ${({ theme }) => theme.colors.ivory};
         font-family: 'Open Sans', sans-serif;
 
-        ${'' /* Fallback background (if gradient is used) */}
-        background: ${({ theme }) => theme.colors.ivory};
-
-         /* ----- Experimental ----- */
-        ${'' /* Teal to White */}
-        ${
-            '' /* background: linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 1) 18%,
-            rgba(66, 151, 160, 1) 78%
-        );  */
-        }
-
-        ${'' /* White to Teal to White */}
-         ${
-             '' /* background: linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 1) 0%,
-            rgba(66, 151, 160, 1) 49%,
-            rgba(255, 255, 255, 1) 100%
-        );  */
-         }
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 
     a {
