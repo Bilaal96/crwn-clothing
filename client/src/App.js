@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -10,24 +10,24 @@ import { closeSideNav } from './redux/nav/nav.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { selectIsSideNavOpen } from './redux/nav/nav.selectors';
 
-// Pages
-import HomePage from './pages/homepage/homepage.component';
-import ShopPage from './pages/shop/shop.component';
-// import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import SignInPage from './pages/sign-in/sign-in.component';
-import SignUpPage from './pages/sign-up/sign-up.component';
-import CheckoutPage from './pages/checkout/checkout.component';
-
-// Components
-import Header from './components/header/header.component';
-
 // Utils
 import { clearFocusAfterInteraction } from './utils/clear-focus-after-interaction';
 import { stopAllAnimationsOnResize } from './utils/stop-animation';
 
+// Components
+import Header from './components/header/header.component';
+import Spinner from './components/spinner/spinner.component';
+
 // Styled Components
 import PageWrapper from './components/styled/page-wrapper';
 import PageOverlay from './components/styled/page-overlay';
+
+// Pages --> Lazy Loaded
+const HomePage = lazy(() => import('./pages/homepage/homepage.component'));
+const ShopPage = lazy(() => import('./pages/shop/shop.component'));
+const SignInPage = lazy(() => import('./pages/sign-in/sign-in.component'));
+const SignUpPage = lazy(() => import('./pages/sign-up/sign-up.component'));
+const CheckoutPage = lazy(() => import('./pages/checkout/checkout.component'));
 
 const App = () => {
     const currentUser = useSelector(selectCurrentUser);
@@ -41,13 +41,13 @@ const App = () => {
     // Event Listeners
     useEffect(() => {
         // Clear HTML element focus on click, keyup & drag
-        const clearFocusEventListeners = clearFocusAfterInteraction();
+        const removeFocusEventListeners = clearFocusAfterInteraction();
 
         // Prevent animations on browser resize
         const removeResizeEventListener = stopAllAnimationsOnResize();
 
         return () => {
-            clearFocusEventListeners();
+            removeFocusEventListeners();
             removeResizeEventListener();
         };
     }, []);
@@ -67,23 +67,37 @@ const App = () => {
 
             <PageWrapper>
                 <Switch>
-                    <Route exact path="/" component={HomePage} />
-                    <Route path="/shop" component={ShopPage} />
-                    <Route exact path="/checkout" component={CheckoutPage} />
-                    <Route
-                        exact
-                        path="/sign-in"
-                        render={() =>
-                            currentUser ? <Redirect to="/" /> : <SignInPage />
-                        }
-                    />
-                    <Route
-                        exact
-                        path="/sign-up"
-                        render={() =>
-                            currentUser ? <Redirect to="/" /> : <SignUpPage />
-                        }
-                    />
+                    <Suspense fallback={<Spinner />}>
+                        <Route exact path="/" component={HomePage} />
+                        <Route path="/shop" component={ShopPage} />
+                        <Route
+                            exact
+                            path="/checkout"
+                            component={CheckoutPage}
+                        />
+                        <Route
+                            exact
+                            path="/sign-in"
+                            render={() =>
+                                currentUser ? (
+                                    <Redirect to="/" />
+                                ) : (
+                                    <SignInPage />
+                                )
+                            }
+                        />
+                        <Route
+                            exact
+                            path="/sign-up"
+                            render={() =>
+                                currentUser ? (
+                                    <Redirect to="/" />
+                                ) : (
+                                    <SignUpPage />
+                                )
+                            }
+                        />
+                    </Suspense>
                 </Switch>
             </PageWrapper>
 

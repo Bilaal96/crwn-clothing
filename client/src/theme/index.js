@@ -41,6 +41,7 @@ const colors = {
 
 // Styled Components Theme
 const theme = {
+    // Themed Colors
     primary: colors.coral,
     secondary: colors.pelorous,
     neutral: {

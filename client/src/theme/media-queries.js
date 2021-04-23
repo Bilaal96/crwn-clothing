@@ -14,12 +14,11 @@ const device = {
 const mediaQuery = {
     /** [ NOTE: ]
      *? default styles (i.e. top-level/no media query) applied at:
-     *! 0 to 599 (px) | mobileLg NOT SPECIFIED
-     ** 0 to 359 (px) | mobileLg SPECIFIED
+     *! 0 to 599 (px) --> if mobileLg NOT SPECIFIED
+     ** 0 to 359 (px) --> if mobileLg IS SPECIFIED
      */
 
-    // 360 to 599 (px) | large mobile screen (+ small tablets)
-    // -- for typography changes only
+    // 375 to 599 (px) | large mobile screen (+ small tablets)
     mobileLg: `@media (min-width: ${device.mobileLg.min})`,
     // 600 to 768 (px) | tablet (+ mobile-horizontal)
     tablet: `@media (min-width: ${device.tablet.min})`,
@@ -31,9 +30,6 @@ const mediaQuery = {
 
     // Hoverable devices only
     hoverable: `@media (hover: hover) and (pointer: fine)`,
-
-    // REVIEW Experimental
-    notHoverable: `@media not all and (hover: hover) and (pointer: fine)`,
 };
 
 export default mediaQuery;

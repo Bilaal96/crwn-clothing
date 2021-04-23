@@ -1,3 +1,7 @@
+/** stopAllAnimationsOnResize()
+ * On resizing the Browser window, animations are janky
+ * This fn prevents all animations on browser resize
+ */
 export const stopAllAnimationsOnResize = () => {
     // Add '.resize-animation-stopper' to document.body
     // css-selector is styled to remove transitions & animations
@@ -6,7 +10,7 @@ export const stopAllAnimationsOnResize = () => {
 
         console.log('stopAnimation');
 
-        // Wait 400ms then remove the class from alldomElements
+        // Wait 400ms then remove the class from all domElements
         setTimeout(() => {
             document.body.classList.remove('resize-animation-stopper');
         }, 400);

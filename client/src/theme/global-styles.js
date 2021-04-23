@@ -20,11 +20,6 @@ const GlobalStyle = createGlobalStyle`
         ${'' /* font-size: 16px; */}
     }
 
-    ${'' /* REVIEW use of wf-loading className */}
-    html.wf-loading * {
-        opacity: 0;
-    }
-
     body {
         background: ${({ theme }) => theme.colors.ivory};
         font-family: 'Open Sans', sans-serif;
