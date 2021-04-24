@@ -8,7 +8,7 @@ import { fetchCollectionsStart } from '../../redux/shop/shop.actions';
 // Components
 import Spinner from '../../components/spinner/spinner.component';
 
-// Components --> Lazy Loaded
+// Lazy Components
 const CollectionsOverview = lazy(() =>
     import(
         '../../components/collections-overview/collections-overview.container.js'

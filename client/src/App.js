@@ -17,12 +17,13 @@ import { stopAllAnimationsOnResize } from './utils/stop-animation';
 // Components
 import Header from './components/header/header.component';
 import Spinner from './components/spinner/spinner.component';
+import ErrorBoundary from './components/error-boundary/error-boundary.component';
 
 // Styled Components
 import PageWrapper from './components/styled/page-wrapper';
 import PageOverlay from './components/styled/page-overlay';
 
-// Pages --> Lazy Loaded
+// Pages --> Lazy Components
 const HomePage = lazy(() => import('./pages/homepage/homepage.component'));
 const ShopPage = lazy(() => import('./pages/shop/shop.component'));
 const SignInPage = lazy(() => import('./pages/sign-in/sign-in.component'));
@@ -67,37 +68,39 @@ const App = () => {
 
             <PageWrapper>
                 <Switch>
-                    <Suspense fallback={<Spinner />}>
-                        <Route exact path="/" component={HomePage} />
-                        <Route path="/shop" component={ShopPage} />
-                        <Route
-                            exact
-                            path="/checkout"
-                            component={CheckoutPage}
-                        />
-                        <Route
-                            exact
-                            path="/sign-in"
-                            render={() =>
-                                currentUser ? (
-                                    <Redirect to="/" />
-                                ) : (
-                                    <SignInPage />
-                                )
-                            }
-                        />
-                        <Route
-                            exact
-                            path="/sign-up"
-                            render={() =>
-                                currentUser ? (
-                                    <Redirect to="/" />
-                                ) : (
-                                    <SignUpPage />
-                                )
-                            }
-                        />
-                    </Suspense>
+                    <ErrorBoundary>
+                        <Suspense fallback={<Spinner />}>
+                            <Route exact path="/" component={HomePage} />
+                            <Route path="/shop" component={ShopPage} />
+                            <Route
+                                exact
+                                path="/checkout"
+                                component={CheckoutPage}
+                            />
+                            <Route
+                                exact
+                                path="/sign-in"
+                                render={() =>
+                                    currentUser ? (
+                                        <Redirect to="/" />
+                                    ) : (
+                                        <SignInPage />
+                                    )
+                                }
+                            />
+                            <Route
+                                exact
+                                path="/sign-up"
+                                render={() =>
+                                    currentUser ? (
+                                        <Redirect to="/" />
+                                    ) : (
+                                        <SignUpPage />
+                                    )
+                                }
+                            />
+                        </Suspense>
+                    </ErrorBoundary>
                 </Switch>
             </PageWrapper>
 
