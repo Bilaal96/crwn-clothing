@@ -25,9 +25,19 @@ const GlobalStyle = createGlobalStyle`
         /* Fallback Background Color */
         background: ${({ theme }) => theme.colors.ivory};
         
-        /* LESS DOTS: https://doodad.dev/pattern-generator?share=stripes-6-255_127_80_1-49_145_202_1-244_234_230_1-40-135-2-1-0-0-0-0-0-0-0 */ 
-        /* MORE DOTS: https://doodad.dev/pattern-generator?share=stripes-8-255_127_80_1-49_145_202_1-244_234_230_1-40-135-2-1-0-0-0-0-0-0-0 */
-        background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cdefs%3E%3Cpattern id='pattern' width='40' height='40' viewBox='0 0 40 40' patternUnits='userSpaceOnUse' patternTransform='rotate(135)'%3E%3Crect id='pattern-background' width='400%25' height='400%25' fill='rgba(244, 234, 230,1)'%3E%3C/rect%3E%3Ccircle fill='rgba(255, 127, 80,1)' cx='0' cy='20' r='1'%3E%3C/circle%3E%3Ccircle fill='rgba(255, 127, 80,1)' cx='40' cy='20' r='1'%3E%3C/circle%3E%3Cpath fill='rgba(49, 145, 202,1)' d='m 19.5 19.5 h1 v1 h-1z'%3E%3C/path%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23pattern)' height='100%25' width='100%25'%3E%3C/rect%3E%3C/svg%3E");
+        ${
+            ''
+            /** REVIEW
+             * "LESS DOTS" does not work (as desired) without "MORE DOTS"
+             *  When "MORE DOTS" is omitted from the styles, the .resize-animation-stopper
+                does not prevent janky animations
+             */
+        }
+        /* MORE DOTS: https://doodad.dev/pattern-generator?share=stripes-6-255_127_80_1-49_145_202_1-244_234_230_1-40-135-2-1-0-0-0-0-0-0-0 */ 
+        background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cdefs%3E%3Cpattern id='pattern' width='40' height='40' viewBox='0 0 40 40' patternUnits='userSpaceOnUse' patternTransform='rotate(135)'%3E%3Crect id='pattern-background' width='400%25' height='400%25' fill='rgba(244, 234, 230,1)'%3E%3C/rect%3E%3Ccircle fill='rgba(255, 127, 80,1)' cx='5' cy='20' r='1'%3E%3C/circle%3E%3Ccircle fill='rgba(255, 127, 80,1)' cx='25' cy='20' r='1'%3E%3C/circle%3E%3Ccircle fill='rgba(49, 145, 202,1)' cx='15' cy='20' r='1'%3E%3C/circle%3E%3Ccircle fill='rgba(49, 145, 202,1)' cx='35' cy='20' r='1'%3E%3C/circle%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23pattern)' height='100%25' width='100%25'%3E%3C/rect%3E%3C/svg%3E");     
+
+        /* LESS DOTS: https://doodad.dev/pattern-generator?share=stripes-8-255_127_80_1-49_145_202_1-244_234_230_1-40-135-2-1-0-0-0-0-0-0-0 */
+         background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cdefs%3E%3Cpattern id='pattern' width='40' height='40' viewBox='0 0 40 40' patternUnits='userSpaceOnUse' patternTransform='rotate(135)'%3E%3Crect id='pattern-background' width='400%25' height='400%25' fill='rgba(244, 234, 230, 1)'%3E%3C/rect%3E%3Ccircle fill='rgba(255, 127, 80, 1)' cx='0' cy='20' r='1'%3E%3C/circle%3E%3Ccircle fill='rgba(255, 127, 80, 1)' cx='40' cy='20' r='1'%3E%3C/circle%3E%3Cpath fill='rgba(49, 145, 202, 1)' d='m 19.5 19.5 h1 v1 h-1z'%3E%3C/path%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23pattern)' height='100%25' width='100%25'%3E%3C/rect%3E%3C/svg%3E"); 
 
         height: 100vh;
         font-family: 'Open Sans', sans-serif;

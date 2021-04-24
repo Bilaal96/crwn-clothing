@@ -12,7 +12,7 @@ import { selectIsSideNavOpen } from './redux/nav/nav.selectors';
 
 // Utils
 import { clearFocusAfterInteraction } from './utils/clear-focus-after-interaction';
-import { stopAllAnimationsOnResize } from './utils/stop-animation';
+import { stopAllAnimationsOnResize } from './utils/stop-animation-on-resize';
 
 // Components
 import Header from './components/header/header.component';
