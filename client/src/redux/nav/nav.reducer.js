@@ -1,7 +1,7 @@
 import { NavActionTypes } from './nav.types';
 
 const INITIAL_STATE = {
-    isSideNavOpen: false,
+    isSideNavOpen: true,
 };
 
 const navReducer = (state = INITIAL_STATE, action) => {
