@@ -23,7 +23,7 @@ const CheckoutPage = () => {
 
     return (
         <section className="checkout-page">
-            <PageHeading>Checkout</PageHeading>
+            <PageHeading>CHECKOUT</PageHeading>
             <ContentGrid>
                 <ContentGridItem colStart="1" colEnd="9">
                     <ContentBox>
