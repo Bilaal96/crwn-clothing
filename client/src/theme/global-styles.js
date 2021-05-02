@@ -21,9 +21,11 @@ const GlobalStyle = createGlobalStyle`
         ${'' /* font-size: 16px; */}
     }
 
-    body {
-        height: 100vh;
+    html, body {
+        height: 100%;
+    }
 
+    body {
         /* Fallback Background Color */
         background-color: ${({ theme }) => theme.colors.ivory};
 
