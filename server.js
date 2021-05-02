@@ -3,6 +3,7 @@ const path = require('path');
 
 // Middleware
 const cors = require('cors');
+const compression = require('compression');
 
 // Import "dotenv" Lib => ONLY in Dev/Test Env
 // -- this ensures our Secret Key remains private
@@ -24,6 +25,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Enable CORS
 app.use(cors());
+
+// Apply compression to all files via Gzipping
+app.use(compression());
 
 // Serve Static Client Files => ONLY in Production Env
 if (process.env.NODE_ENV === 'production') {
