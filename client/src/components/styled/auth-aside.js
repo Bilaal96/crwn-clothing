@@ -18,7 +18,8 @@ export const AuthAside = styled.div`
 
 // Heading
 export const Heading = styled.h2`
-    font-size: 1.6rem;
+    /* font-size: 1.6rem; */
+    font-size: clamp(1.9rem, 2vw, 2.4rem);
     color: ${({ theme }) => theme.colors.coral};
     text-align: center;
     letter-spacing: 0.1rem;
@@ -34,7 +35,7 @@ export const SubHeading = styled.p`
     font-size: 1.4rem;
     font-weight: 400;
     letter-spacing: 0.1rem;
-    margin: 1rem 0 0 0.2rem;
+    margin: 1rem 0 0.6rem 0.2rem;
 `;
 
 // CtaList

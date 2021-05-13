@@ -11,7 +11,7 @@ import { selectCurrentUser } from './redux/user/user.selectors';
 import { selectIsSideNavOpen } from './redux/nav/nav.selectors';
 
 // Utils
-import { clearFocusAfterInteraction } from './utils/clear-focus-after-interaction';
+import { handleFocusOnInteraction } from './utils/clear-focus-after-interaction';
 import { stopAllAnimationsOnResize } from './utils/stop-animation-on-resize';
 
 // Components
@@ -26,6 +26,7 @@ import PageOverlay from './components/styled/page-overlay';
 // Pages --> Lazy Components
 const HomePage = lazy(() => import('./pages/homepage/homepage.component'));
 const ShopPage = lazy(() => import('./pages/shop/shop.component'));
+const ContactPage = lazy(() => import('./pages/contact/contact.component'));
 const SignInPage = lazy(() => import('./pages/sign-in/sign-in.component'));
 const SignUpPage = lazy(() => import('./pages/sign-up/sign-up.component'));
 const CheckoutPage = lazy(() => import('./pages/checkout/checkout.component'));
@@ -42,7 +43,7 @@ const App = () => {
     // Event Listeners
     useEffect(() => {
         // Clear HTML element focus on click, keyup & drag
-        const removeFocusEventListeners = clearFocusAfterInteraction();
+        const removeFocusEventListeners = handleFocusOnInteraction();
 
         // Prevent animations on browser resize
         const removeResizeEventListener = stopAllAnimationsOnResize();
@@ -77,6 +78,7 @@ const App = () => {
                                 path="/checkout"
                                 component={CheckoutPage}
                             />
+                            <Route path="/contact" component={ContactPage} />
                             <Route
                                 exact
                                 path="/sign-in"

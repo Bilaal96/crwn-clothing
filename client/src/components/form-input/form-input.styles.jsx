@@ -39,10 +39,10 @@ export const FormInput = styled.input`
     font-size: 1.8rem;
     letter-spacing: 0.1rem;
     padding: 1rem 0rem;
-
     border: none;
     border-radius: 0;
     border-bottom: 0.1rem solid ${({ theme }) => theme.colors.charcoal};
+    padding-bottom: 1.1rem;
 
     /* Replace Google auto-complete background-color */
     &:-webkit-autofill {
@@ -54,9 +54,14 @@ export const FormInput = styled.input`
         letter-spacing: 0.5rem;
     }
 
+    &:hover {
+        padding-bottom: 1rem;
+        border-bottom: 0.2rem solid ${({ theme }) => theme.colors.bahamaBlue};
+    }
+
     &:focus {
         outline: 0;
-        padding: 1rem 0rem 0.9rem;
+        padding: 1rem 0;
         color: ${({ theme }) => theme.colors.black};
         border-bottom: 0.2rem solid ${({ theme }) => theme.colors.pelorous};
 

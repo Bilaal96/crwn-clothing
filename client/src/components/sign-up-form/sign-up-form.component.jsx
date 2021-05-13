@@ -8,7 +8,7 @@ import { signUpStart } from '../../redux/user/user.actions';
 import FormInput from '../form-input/form-input.component';
 
 // Styled Components
-import { AuthFormWrapper, AuthFormTitle } from '../styled/auth-form';
+import { FormWrapper, FormTitle } from '../styled/form';
 import { ButtonOutlined } from '../styled/button';
 
 const SignUpForm = () => {
@@ -49,8 +49,8 @@ const SignUpForm = () => {
 
     return (
         <>
-            <AuthFormTitle>Don't have an account?</AuthFormTitle>
-            <AuthFormWrapper>
+            <FormTitle>Don't have an account?</FormTitle>
+            <FormWrapper>
                 <form className="sign-up-form" onSubmit={handleSubmit}>
                     <fieldset>
                         <legend>Register now with your email & password</legend>
@@ -89,13 +89,17 @@ const SignUpForm = () => {
                         />
 
                         <div className="buttons-container">
-                            <ButtonOutlined type="submit" extend>
+                            <ButtonOutlined
+                                type="submit"
+                                primary="bahamaBlue"
+                                extend
+                            >
                                 Register
                             </ButtonOutlined>
                         </div>
                     </fieldset>
                 </form>
-            </AuthFormWrapper>
+            </FormWrapper>
         </>
     );
 };

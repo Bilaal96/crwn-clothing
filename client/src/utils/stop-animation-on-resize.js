@@ -8,7 +8,7 @@ export const stopAllAnimationsOnResize = () => {
     const setBodyStyles = () => {
         document.body.classList.add('resize-animation-stopper');
 
-        console.log('stopAnimation');
+        // console.log('stopAnimationOnResize');
 
         // Wait 400ms then remove the class from all domElements
         setTimeout(() => {

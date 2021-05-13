@@ -1,8 +1,8 @@
-export const clearFocusAfterInteraction = () => {
-    const clearFocus = (e) => {
-        // Ignore if event target is any of the following
-        // -- form input
-        if (e.target.classList?.contains('form-input')) return;
+export const handleFocusOnInteraction = () => {
+    const handleFocus = (e) => {
+        // Ignore if event target has the following className
+        // -- used to keep form inputs interactive
+        if (e.target.classList?.contains('maintain-focus')) return;
 
         // Clear Focus
         if (
@@ -14,13 +14,13 @@ export const clearFocusAfterInteraction = () => {
         }
     };
 
-    window.addEventListener('click', clearFocus);
-    window.addEventListener('keyup', clearFocus);
-    window.addEventListener('drag', clearFocus);
+    window.addEventListener('click', handleFocus);
+    window.addEventListener('keyup', handleFocus);
+    window.addEventListener('drag', handleFocus);
 
     return () => {
-        window.removeEventListener('click', clearFocus);
-        window.removeEventListener('keyup', clearFocus);
-        window.removeEventListener('drag', clearFocus);
+        window.removeEventListener('click', handleFocus);
+        window.removeEventListener('keyup', handleFocus);
+        window.removeEventListener('drag', handleFocus);
     };
 };

@@ -12,7 +12,7 @@ import FormInput from '../form-input/form-input.component';
 import Divider from '../divider/divider.component';
 
 // Styled Components
-import * as SC from '../styled/auth-form';
+import * as SC from '../styled/form';
 import { Button } from '../styled/button';
 
 const SignInForm = () => {
@@ -54,8 +54,8 @@ const SignInForm = () => {
 
     return (
         <>
-            <SC.AuthFormTitle>Already have an account?</SC.AuthFormTitle>
-            <SC.AuthFormWrapper>
+            <SC.FormTitle>Already have an account?</SC.FormTitle>
+            <SC.FormWrapper>
                 <form onSubmit={handleSubmit} className="sign-in-form">
                     <fieldset>
                         <legend>Sign in with your email & password</legend>
@@ -97,7 +97,7 @@ const SignInForm = () => {
                         </div>
                     </fieldset>
                 </form>
-            </SC.AuthFormWrapper>
+            </SC.FormWrapper>
         </>
     );
 };
