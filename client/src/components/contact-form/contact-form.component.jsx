@@ -96,7 +96,7 @@ const ContactForm = () => {
                             maxLength={1400}
                             placeholder="Type enquiry here . . ."
                             required
-                        ></FormTextArea>
+                        />
 
                         <div className="buttons-container">
                             <ButtonOutlined

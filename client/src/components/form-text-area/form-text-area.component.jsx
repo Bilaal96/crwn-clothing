@@ -12,7 +12,7 @@ const FormTextArea = ({ handleChange, ...otherProps }) => {
                 className="maintain-focus"
                 onChange={handleChange}
                 {...otherProps}
-            ></SC.TextArea>
+            />
 
             {maxLength && (
                 <SC.CharCount $charsUsed={charactersUsed} $maxChars={maxLength}>

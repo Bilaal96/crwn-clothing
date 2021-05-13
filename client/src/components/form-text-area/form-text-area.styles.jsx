@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import mediaQuery from '../../theme/media-queries';
 
 export const TextArea = styled.textarea`
     display: block;
@@ -14,16 +15,15 @@ export const TextArea = styled.textarea`
     letter-spacing: 0.05rem;
     resize: none;
 
-    &:hover,
+    ${mediaQuery.hoverable} {
+        &:hover {
+            padding: 0.9rem;
+            border: 0.2rem solid ${({ theme }) => theme.colors.bahamaBlue};
+        }
+    }
+
     &:focus {
         padding: 0.9rem;
-    }
-
-    &:hover {
-        border: 0.2rem solid ${({ theme }) => theme.colors.bahamaBlue};
-    }
-
-    &:focus {
         outline: none !important;
         border: 0.2rem solid ${({ theme }) => theme.colors.pelorous};
         color: ${({ theme }) => theme.colors.black};

@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import mediaQuery from '../../theme/media-queries';
 
 export const FormSelectGroup = styled.div`
     display: flex;
@@ -23,6 +24,7 @@ export const SelectWrapper = styled.div`
 
 export const Select = styled.select`
     width: 100%;
+    background: ${({ theme }) => theme.colors.white};
     color: ${({ theme }) => theme.colors.greenHaze};
     font-size: clamp(1.4rem, 2vw, 1.8rem);
     letter-spacing: 0.05rem;
@@ -40,16 +42,16 @@ export const Select = styled.select`
     /* appearance: none; */
     /* background-image: url('data:image/svg_xml;utf8,<svg>'); */
 
-    &:hover,
+    ${mediaQuery.hoverable} {
+        &:hover {
+            margin-bottom: 0;
+            border-bottom: 0.2rem solid
+                ${({ theme }) => theme.colors.bahamaBlue};
+        }
+    }
+
     &:focus {
         margin-bottom: 0;
-    }
-
-    &:hover {
-        border-bottom: 0.2rem solid ${({ theme }) => theme.colors.bahamaBlue};
-    }
-
-    &:focus {
         color: ${({ theme }) => theme.colors.greenHaze};
         outline: none;
         border-bottom: 0.2rem solid ${({ theme }) => theme.colors.pelorous};

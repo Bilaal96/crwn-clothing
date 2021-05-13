@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/macro';
+import mediaQuery from '../../theme/media-queries';
 
 // Mixin - use to shrink label on focus & if input.value has length
 const shrinkLabel = css`
@@ -54,9 +55,12 @@ export const FormInput = styled.input`
         letter-spacing: 0.5rem;
     }
 
-    &:hover {
-        padding-bottom: 1rem;
-        border-bottom: 0.2rem solid ${({ theme }) => theme.colors.bahamaBlue};
+    ${mediaQuery.hoverable} {
+        &:hover {
+            padding-bottom: 1rem;
+            border-bottom: 0.2rem solid
+                ${({ theme }) => theme.colors.bahamaBlue};
+        }
     }
 
     &:focus {
