@@ -22,7 +22,7 @@ export const selectCollectionsForPreview = createSelector(
             : []
 );
 
-// ! FOR REFERENCE: This implementation does NOT work with useSelector() Hook
+// ! FOR REFERENCE: This implementation with lodash.memoize() does NOT work with useSelector() Hook
 // NOTE: Here selectSingleCollection is a Curried Selector Function
 // -- As it requires an argument to be passed to it
 /* export const selectSingleCollection = memoize((collectionUrlParam) =>
@@ -32,7 +32,7 @@ export const selectCollectionsForPreview = createSelector(
 ); */
 
 // * This implementation works with or without useSelector() Hook
-// -- eliminates the need for lodash.memoize
+// -- eliminates the need for lodash.memoize as dependency
 export const selectSingleCollection = createSelector(
     [selectAllCollections, selectCollectionIdParam],
     (collections, collectionIdParam) =>

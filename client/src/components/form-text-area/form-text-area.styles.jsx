@@ -48,6 +48,7 @@ export const CharCount = styled.div`
             font-weight: 600;
         `}
 
+    /* Create space between close-to-limit message & character count */
     span + span {
         margin-left: 0.4rem;
     }

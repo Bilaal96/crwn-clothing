@@ -17,6 +17,7 @@ export const Label = styled.label`
     padding-left: 0.5rem;
 `;
 
+// Anchor point for SelectArrow positioning
 export const SelectWrapper = styled.div`
     position: relative;
     width: 100%;
@@ -36,11 +37,6 @@ export const Select = styled.select`
 
     /* Offset - removed on hover/focus for border growth */
     margin-bottom: 0.1rem;
-
-    /* Override Default Arrow Styles */
-
-    /* appearance: none; */
-    /* background-image: url('data:image/svg_xml;utf8,<svg>'); */
 
     ${mediaQuery.hoverable} {
         &:hover {
@@ -62,6 +58,7 @@ export const Select = styled.select`
     }
 `;
 
+// Covers default select dropdown arrow for visual consistency across browsers
 export const SelectArrow = styled.span`
     position: absolute;
     top: 0;

@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Styled Compononents
 import * as SC from './contact-detail.styles';
 
 const ContactDetail = ({ title, value }) => {

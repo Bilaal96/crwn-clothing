@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro';
 
 export const ContactDetail = styled.div`
+    /* Add spacing between each ContactDetail component */
     & + & {
         margin-top: 3rem;
     }

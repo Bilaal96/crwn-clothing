@@ -1,10 +1,10 @@
 import { ShopActionTypes } from './shop.types';
 
-// Firebase Utils
-import {
+// Firebase Utils - for Redux Thunk - EXAMPLE ONLY (see below)
+/* import {
     firestore,
     convertCollectionsSnapshotToMap,
-} from '../../firebase/firebase.utils';
+} from '../../firebase/firebase.utils'; */
 
 // Actions that modify the shopReducer
 export const fetchCollectionsStart = () => ({
@@ -22,7 +22,7 @@ export const fetchCollectionsFailure = (errorMessage) => ({
 });
 
 /**
- * ----- Redux Thunk Example: Fetching Collections -----
+ * ----- Redux Thunk - EXAMPLE ONLY: Fetching Collections -----
  * def: Thunk => An async action-creator func that returns a FUNC with dispatch() as a param
  *^ as opposed to the standard action-creator func which returns an action-object
  
@@ -32,7 +32,7 @@ export const fetchCollectionsFailure = (errorMessage) => ({
 
  * NOTE: this function serves as an example only - the async logic of the Thunk was adapted for use in a Shop Saga: fetchCollectionsAync()
  */
-export const fetchCollectionsAsync = () => {
+/* export const fetchCollectionsAsync = () => {
     return (dispatch) => {
         // ----- Fetch Collections Data from Firestore -----
         // --- Promise Pattern ---
@@ -58,4 +58,4 @@ export const fetchCollectionsAsync = () => {
             })
             .catch((error) => dispatch(fetchCollectionsFailure(error.message)));
     };
-};
+}; */

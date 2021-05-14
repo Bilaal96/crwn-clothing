@@ -1,8 +1,10 @@
 import React from 'react';
 
+// Styled Components
 import * as SC from './form-text-area.styles';
 
 const FormTextArea = ({ handleChange, ...otherProps }) => {
+    // Vars to display character count
     const { value, maxLength } = otherProps;
     const charactersUsed = value.length;
 
@@ -14,6 +16,7 @@ const FormTextArea = ({ handleChange, ...otherProps }) => {
                 {...otherProps}
             />
 
+            {/* Display character count if maxLength prop is provided */}
             {maxLength && (
                 <SC.CharCount $charsUsed={charactersUsed} $maxChars={maxLength}>
                     {charactersUsed === parseInt(maxLength) && (

@@ -20,11 +20,6 @@ const ContactPage = () => {
             <ContentGrid>
                 <ContentGridItem colStart="1" colEnd="5">
                     <ContentBox>
-                        {/* Contact Details
-                         * For customer support
-                         * phone
-                         * email
-                         */}
                         <SC.AsideHeading>Customer Support</SC.AsideHeading>
 
                         <ContactDetail
@@ -49,20 +44,6 @@ const ContactPage = () => {
                 </ContentGridItem>
                 <ContentGridItem colStart="5" colEnd="-1">
                     <ContentBox>
-                        {/* 
-                          Header: How can we help?
-                          Contact Form for Enquiries
-
-                            * name
-                            * email
-                            subject dropdown
-                            * textarea
-                           * Include "Subject" dropdown
-                            - General Enquiry
-                            - Business Enquiry
-                            - Other
-
-                          */}
                         <ContactForm />
                     </ContentBox>
                 </ContentGridItem>

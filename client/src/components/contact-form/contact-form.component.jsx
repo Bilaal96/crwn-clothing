@@ -55,6 +55,7 @@ const ContactForm = () => {
                             form state.
                         </legend>
 
+                        {/* Full Name */}
                         <FormInput
                             handleChange={handleChange}
                             label="Full Name"
@@ -63,6 +64,8 @@ const ContactForm = () => {
                             value={fullName}
                             required
                         />
+
+                        {/* Email */}
                         <FormInput
                             handleChange={handleChange}
                             label="Email"
@@ -80,12 +83,6 @@ const ContactForm = () => {
                             name="subject"
                             options={selectOptions}
                             selectedOption={subject}
-                            // CHECK:
-                            // - HOW TO GET VALUE
-                            // - Set default selected
-                            // IF NECESSARY => make new method handleSelectChange
-                            // handleChange={handleChange}
-                            // value={subject}
                         />
 
                         {/* Enquiry Message */}

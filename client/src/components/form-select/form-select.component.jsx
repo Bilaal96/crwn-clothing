@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Styled Components
 import * as SC from './/form-select.styles';
 
 const FormSelect = ({
@@ -12,9 +13,11 @@ const FormSelect = ({
 }) => {
     return (
         <SC.FormSelectGroup>
-            <SC.Label className="maintain-focus" htmlFor={id}>
-                {label}:
-            </SC.Label>
+            {label && (
+                <SC.Label className="maintain-focus" htmlFor={id}>
+                    {label}:
+                </SC.Label>
+            )}
 
             <SC.SelectWrapper>
                 <SC.Select
