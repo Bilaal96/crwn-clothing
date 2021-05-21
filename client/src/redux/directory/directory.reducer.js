@@ -1,12 +1,12 @@
 // Directory Images
-import hats from '../../assets/images/directory/hats.png';
+/* import hats from '../../assets/images/directory/hats.png';
 import jackets from '../../assets/images/directory/jackets.png';
 import footwear from '../../assets/images/directory/footwear.png';
 import womens from '../../assets/images/directory/womens.png';
-import mens from '../../assets/images/directory/mens.png';
+import mens from '../../assets/images/directory/mens.png'; */
 
 // Load Image from imageUrls
-/* const INITIAL_STATE = {
+const INITIAL_STATE = {
     sections: [
         {
             title: 'hats',
@@ -41,10 +41,10 @@ import mens from '../../assets/images/directory/mens.png';
             linkUrl: 'shop/mens',
         },
     ],
-}; */
+};
 
 // Load Image from LOCAL folder: /src/assets/images/directory
-const INITIAL_STATE = {
+/* const INITIAL_STATE = {
     sections: [
         {
             title: 'hats',
@@ -80,7 +80,7 @@ const INITIAL_STATE = {
             linkUrl: 'shop/mens',
         },
     ],
-};
+}; */
 
 const directoryReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
