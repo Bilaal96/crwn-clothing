@@ -53,7 +53,7 @@ const CheckoutItem = (props) => {
                         Price: <br />
                         <span className="sub-label">(single item)</span>
                     </SC.Label>
-                    <SC.Value>${price}</SC.Value>
+                    <SC.Value>£{price}</SC.Value>
                 </SC.SingleItemPrice>
 
                 <SC.Quantity>
@@ -77,7 +77,7 @@ const CheckoutItem = (props) => {
 
                 <SC.SubTotal>
                     <SC.Label>Subtotal: </SC.Label>
-                    <SC.Value>${subTotal}</SC.Value>
+                    <SC.Value>£{subTotal}</SC.Value>
                 </SC.SubTotal>
             </SC.ProductDetails>
         </SC.CheckoutItem>

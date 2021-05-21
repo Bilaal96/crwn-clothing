@@ -26,7 +26,7 @@ const CheckoutSummary = ({ cartItems, cartTotal }) => {
 
                 <div className="checkout-total">
                     <span className="label">Total: </span>
-                    <span className="value">${cartTotal}</span>
+                    <span className="value">£{cartTotal}</span>
                 </div>
             </SC.SummaryHeader>
 

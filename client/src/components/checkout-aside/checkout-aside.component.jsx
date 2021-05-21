@@ -43,7 +43,7 @@ const CheckoutAside = ({ cartTotal }) => {
 
             <SC.TotalPrice>
                 <span className="label">TOTAL:</span>{' '}
-                <span className="value">${cartTotal}</span>
+                <span className="value">£{cartTotal}</span>
             </SC.TotalPrice>
 
             {/* Stripe Payment Button */}

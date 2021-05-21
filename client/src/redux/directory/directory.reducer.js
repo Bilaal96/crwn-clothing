@@ -1,4 +1,12 @@
-const INITIAL_STATE = {
+// Directory Images
+import hats from '../../assets/images/directory/hats.png';
+import jackets from '../../assets/images/directory/jackets.png';
+import footwear from '../../assets/images/directory/footwear.png';
+import womens from '../../assets/images/directory/womens.png';
+import mens from '../../assets/images/directory/mens.png';
+
+// Load Image from imageUrls
+/* const INITIAL_STATE = {
     sections: [
         {
             title: 'hats',
@@ -28,6 +36,45 @@ const INITIAL_STATE = {
         {
             title: 'mens',
             imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
+            size: 'large',
+            id: 5,
+            linkUrl: 'shop/mens',
+        },
+    ],
+}; */
+
+// Load Image from LOCAL folder: /src/assets/images/directory
+const INITIAL_STATE = {
+    sections: [
+        {
+            title: 'hats',
+            // imageUrl: `${LOCAL_IMAGE_PATH}/hats.png`,
+            imageUrl: hats,
+            id: 1,
+            linkUrl: 'shop/hats',
+        },
+        {
+            title: 'jackets',
+            imageUrl: jackets,
+            id: 2,
+            linkUrl: 'shop/jackets',
+        },
+        {
+            title: 'footwear',
+            imageUrl: footwear,
+            id: 3,
+            linkUrl: 'shop/footwear',
+        },
+        {
+            title: 'womens',
+            imageUrl: womens,
+            size: 'large',
+            id: 4,
+            linkUrl: 'shop/womens',
+        },
+        {
+            title: 'mens',
+            imageUrl: mens,
             size: 'large',
             id: 5,
             linkUrl: 'shop/mens',

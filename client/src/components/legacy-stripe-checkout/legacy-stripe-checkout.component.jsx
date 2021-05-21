@@ -51,10 +51,11 @@ const LegacyStripeCheckout = ({ price }) => {
                     label="Pay Now"
                     panelLabel="Pay"
                     name="CRWN Clothing Ltd."
+                    currency="gbp"
                     billingAddress
                     shippingAddress
                     image="https://svgshare.com/i/CUz.svg"
-                    description={`Your total is $${price}`}
+                    description={`Your total is £${price}`}
                     amount={priceForStripe}
                     token={onToken}
                     stripeKey={publishableKey}

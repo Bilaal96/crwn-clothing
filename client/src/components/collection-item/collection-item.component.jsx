@@ -29,11 +29,11 @@ const CollectionItem = (props) => {
                 </SC.AddToCartButton>
             </SC.ItemImage>
             <SC.ItemFooter className="collection-footer">
-                <SC.ItemName className="name" title={name}>
+                <SC.ItemName className="name" title={`${name}`}>
                     {name}
                 </SC.ItemName>
-                <SC.ItemPrice className="price" title={`$${price}`}>
-                    ${price}
+                <SC.ItemPrice className="price" title={`Price: £${price}`}>
+                    £{price}
                 </SC.ItemPrice>
             </SC.ItemFooter>
         </SC.CollectionItem>
