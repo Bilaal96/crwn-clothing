@@ -4,7 +4,7 @@ import mediaQuery from '../../theme/media-queries';
 const PageHeading = styled.h1`
     width: 100%;
     padding: 1rem;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.15);
 
     font-size: ${({ theme: { fontSize } }) => fontSize.h1.xs};
     font-weight: 600;
@@ -14,7 +14,7 @@ const PageHeading = styled.h1`
     margin-bottom: 0.8em;
     color: ${({ theme }) => theme.colors.mistyBlue};
     border-radius: 0.3rem;
-    box-shadow: 0 0 0.8rem 0.1rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0.8rem 0.1rem rgba(0, 0, 0, 0.1);
 
     ${mediaQuery.mobileLg} {
         font-size: ${({ theme: { fontSize } }) => fontSize.h1.sm};

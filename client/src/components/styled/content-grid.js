@@ -16,21 +16,26 @@ export const ContentGrid = styled.div.attrs((props) => ({
     grid-template-columns: 1fr;
     grid-template-rows: ${(props) => props.$rows};
     grid-auto-rows: ${(props) => props.$autoRows};
-    gap: 1rem;
+    gap: 1.8rem;
+
+    ${mediaQuery.tablet} {
+        gap: 2rem;
+    }
 
     ${mediaQuery.laptop} {
-        gap: 1.6rem;
+        gap: 2.2rem;
     }
 
     /* Desktop: change to Multi-column Grid */
     ${mediaQuery.desktop} {
         grid-template-columns: ${(props) => props.$cols};
-        gap: 2rem;
+        gap: 2.4rem;
     }
 
     ${mediaQuery.largeScreen} {
         width: ${(props) => props.$widthLg};
         margin: 0 auto;
+        gap: 2.6rem;
     }
 `;
 
@@ -54,7 +59,7 @@ export const ContentBox = styled.div.attrs((props) => ({
     background: ${({ theme }) => theme.colors.white};
     padding: 1.6rem;
     border-radius: 0.3rem;
-    box-shadow: 0 0 0.8rem 0.1rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0.8rem 0.1rem rgba(0, 0, 0, 0.1);
 
     ${mediaQuery.tablet} {
         padding: 2rem;

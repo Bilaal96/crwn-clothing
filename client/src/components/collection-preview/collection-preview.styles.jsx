@@ -11,7 +11,7 @@ export const CollectionPreview = styled.div`
     padding: 1.6rem;
     margin-bottom: 1.8rem;
     border-radius: 0.3rem;
-    box-shadow: 0 0 0.8rem 0.1rem rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 0 0.8rem 0.3rem rgba(0, 0, 0, 0.1); */
 
     ${mediaQuery.tablet} {
         margin-bottom: 2rem;
