@@ -7,42 +7,23 @@ export const CollectionPreview = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-    /* height: 100%; */
-    margin-bottom: 5rem;
-
-    // -----------------------------
-    /* CollectionPreview Divider */
-    /* &::after {
-        content: '';
-        position: absolute;
-        bottom: -3.8rem;
-        left: 0;
-        width: 100%;
-        height: 0.3rem;
-        background: rgba(0, 0, 0, 0.1);
-    } */
-
-    /* Hide Divider On Last CollectionPreview */
-    /* &:last-child {
-        &:after {
-            display: none;
-        }
-    } */
-    // -----------------------------
-
-    /* FIXME CONSIDER Mobile Horizontal */
-    /* margin-bottom: 4.8rem; */
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 1.6rem;
+    margin-bottom: 1.8rem;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 0.8rem 0.1rem rgba(0, 0, 0, 0.3);
 
     ${mediaQuery.tablet} {
-        /* margin-bottom: 2.6rem; */
+        margin-bottom: 2rem;
     }
 
     ${mediaQuery.laptop} {
-        /* margin-bottom: 2.8rem; */
+        margin-bottom: 2.4rem;
     }
 
     ${mediaQuery.desktop} {
-        /* margin-bottom: 3rem; */
+        padding: 2.4rem 2rem;
+        margin-bottom: 2.6rem;
     }
 `;
 
@@ -51,7 +32,7 @@ export const CollectionPreviewTitle = styled.h2`
     /* font-size: 1.6rem; */
     font-size: ${({ theme: { fontSize } }) => fontSize.h2.xs};
     font-weight: 600;
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.4rem;
     transition: all 0.2s ease;
 
     ${mediaQuery.mobileLg} {
@@ -320,7 +301,7 @@ export const PreviewItemsGrid = styled.div`
             `repeat(${numOfCols}, minmax(30rem, 1fr))`};
         grid-template-rows: 46rem;
         gap: 1.6rem;
-        padding-bottom: 2rem;
+        padding: 2rem 0;
     }
 
     ${mediaQuery.largeScreen} {

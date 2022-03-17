@@ -54,7 +54,7 @@ export const ContentBox = styled.div.attrs((props) => ({
     background: ${({ theme }) => theme.colors.white};
     padding: 1.6rem;
     border-radius: 0.3rem;
-    box-shadow: 0 0 0.8rem 0.1rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0.8rem 0.1rem rgba(0, 0, 0, 0.3);
 
     ${mediaQuery.tablet} {
         padding: 2rem;

@@ -20,6 +20,7 @@ const SideNavSwitch = () => {
         <SC.SideNavSwitch
             $isOpen={isSideNavOpen}
             onClick={dispatchToggleSideNav}
+            aria-label="Navigation Toggle"
         >
             <SC.BurgerIcon $isOpen={isSideNavOpen}>
                 <div className="middle-line" />

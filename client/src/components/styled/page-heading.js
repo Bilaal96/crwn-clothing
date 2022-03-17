@@ -13,7 +13,8 @@ const PageHeading = styled.h1`
     letter-spacing: 0.3rem;
     margin-bottom: 0.8em;
     color: ${({ theme }) => theme.colors.mistyBlue};
-    border-radius: 0.2rem;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 0.8rem 0.1rem rgba(0, 0, 0, 0.3);
 
     ${mediaQuery.mobileLg} {
         font-size: ${({ theme: { fontSize } }) => fontSize.h1.sm};
