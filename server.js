@@ -4,6 +4,7 @@ const path = require('path');
 // Middleware
 const cors = require('cors');
 const compression = require('compression');
+const enforce = require('express-sslify');
 
 // Import "dotenv" Lib => ONLY in Dev/Test Env
 // -- this ensures our Secret Key remains private
@@ -26,13 +27,27 @@ app.use(express.urlencoded({ extended: true }));
 // Enable CORS
 app.use(cors());
 
-// Apply compression to all files via Gzipping
-app.use(compression());
-
 // Serve Static Client Files => ONLY in Production Env
 if (process.env.NODE_ENV === 'production') {
+    // Apply compression to all files via Gzipping
+    app.use(compression());
+
+    /**
+     * Heroku uses a reverse-proxy, which allows us to forward unencrypted HTTP traffic to the website
+     * Heroku (by default) hides the headers that tell us what protocol the data is being sent over (HTTP or HTTPS)
+     * The trustProtoHeader appends these headers to the incoming request
+     */
+    app.use(enforce.HTTPS({ trustProtoHeader: true }));
+
     // Allow static files to be served from: __dirname/client/build
     app.use(express.static(path.join(__dirname, 'client/build')));
+
+    // Serve Service Worker file when requested
+    app.get('/service-worker.js', (req, res, next) => {
+        res.sendFile(
+            path.resolve(__dirname, '..', 'build', 'service-worker.js')
+        );
+    });
 
     // Serve index.html for any incoming HTTP GET Request
     // -- all static files are built into small modules/packages from index.html
