@@ -20,7 +20,11 @@ const LegacyStripeCheckout = ({ price }) => {
     const onToken = (token) => {
         // Make Payment Charge to Stripe API
         axios({
-            url: 'payment',
+            url: `${
+                process.env.NODE_ENV === 'production'
+                    ? process.env.REACT_APP_CRWN_API
+                    : 'http://localhost:5000'
+            }/payment`,
             method: 'POST',
             data: {
                 token,
