@@ -25,7 +25,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Enable CORS
-app.use(cors());
+app.use(
+    cors({
+        origin:
+            (process.env.NODE_ENV === 'production' && process.env.ORIGIN) ||
+            '*',
+    })
+);
 
 // Serve Static Client Files => ONLY in Production Env
 if (process.env.NODE_ENV === 'production') {
@@ -37,7 +43,7 @@ if (process.env.NODE_ENV === 'production') {
      * Heroku (by default) hides the headers that tell us what protocol the data is being sent over (HTTP or HTTPS)
      * The trustProtoHeader appends these headers to the incoming request
      */
-    app.use(enforce.HTTPS({ trustProtoHeader: true }));
+    /* app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
     // Allow static files to be served from: __dirname/client/build
     app.use(express.static(path.join(__dirname, 'client/build')));
@@ -53,7 +59,7 @@ if (process.env.NODE_ENV === 'production') {
     // -- all static files are built into small modules/packages from index.html
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-    });
+    }); */
 }
 
 // Pass Data for Payment Charge to Stripe Service via Stripe Library
