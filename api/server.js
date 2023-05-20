@@ -1,15 +1,9 @@
+require('dotenv').config();
 const express = require('express');
-const path = require('path');
 
 // Middleware
 const cors = require('cors');
 const compression = require('compression');
-const enforce = require('express-sslify');
-
-// Import "dotenv" Lib => ONLY in Dev/Test Env
-// -- this ensures our Secret Key remains private
-// -- Env variables can be configured for production when app is hosted
-if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
 // Import Stripe Library => passing Stripe Secret Key as arg.
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
@@ -26,63 +20,38 @@ app.use(express.urlencoded({ extended: true }));
 
 // Enable CORS
 app.use(
-    cors({
-        origin:
-            (process.env.NODE_ENV === 'production' && process.env.ORIGIN) ||
-            '*',
-    })
+  cors({
+    origin:
+      (process.env.NODE_ENV === 'production' && process.env.ORIGIN) || '*',
+  })
 );
 
-// Serve Static Client Files => ONLY in Production Env
 if (process.env.NODE_ENV === 'production') {
-    // Apply compression to all files via Gzipping
-    app.use(compression());
-
-    /**
-     * Heroku uses a reverse-proxy, which allows us to forward unencrypted HTTP traffic to the website
-     * Heroku (by default) hides the headers that tell us what protocol the data is being sent over (HTTP or HTTPS)
-     * The trustProtoHeader appends these headers to the incoming request
-     */
-    /* app.use(enforce.HTTPS({ trustProtoHeader: true }));
-
-    // Allow static files to be served from: __dirname/client/build
-    app.use(express.static(path.join(__dirname, 'client/build')));
-
-    // Serve Service Worker file when requested
-    app.get('/service-worker.js', (req, res, next) => {
-        res.sendFile(
-            path.resolve(__dirname, '..', 'build', 'service-worker.js')
-        );
-    });
-
-    // Serve index.html for any incoming HTTP GET Request
-    // -- all static files are built into small modules/packages from index.html
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-    }); */
+  // Apply compression to all files via Gzipping
+  app.use(compression());
 }
 
 // Pass Data for Payment Charge to Stripe Service via Stripe Library
 app.post('/payment', (req, res) => {
-    // Extract required data from request.body & set currency
-    const body = {
-        source: req.body.token.id,
-        amount: req.body.amount,
-        currency: 'usd',
-    };
+  // Extract required data from request.body & set currency
+  const body = {
+    source: req.body.token.id,
+    amount: req.body.amount,
+    currency: 'usd',
+  };
 
-    // Create Stripe payment charge & handle success & failure cases
-    stripe.charges.create(body, (stripeErr, stripeRes) => {
-        if (stripeErr) {
-            res.status(500).send({ error: stripeErr });
-        } else {
-            res.status(200).send({ success: stripeRes });
-        }
-    });
+  // Create Stripe payment charge & handle success & failure cases
+  stripe.charges.create(body, (stripeErr, stripeRes) => {
+    if (stripeErr) {
+      res.status(500).send({ error: stripeErr });
+    } else {
+      res.status(200).send({ success: stripeRes });
+    }
+  });
 });
 
 // Listen For Connections on "port"
 app.listen(port, (error) => {
-    if (error) throw error;
-    console.log(`Server running on Port: ${port}`);
+  if (error) throw error;
+  console.log(`Server running on Port: ${port}`);
 });
