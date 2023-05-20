@@ -1,10 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
+
+import { clearCart } from '../../redux/cart/cart.actions';
 
 import { Button } from '../styled/button';
 
 const LegacyStripeCheckout = ({ price }) => {
+    const dispatch = useDispatch();
+
     // Calc. price in cents - as Stripe handles cents
     const priceForStripe = price * 100;
     const publishableKey =
@@ -24,6 +29,7 @@ const LegacyStripeCheckout = ({ price }) => {
         })
             .then((response) => {
                 alert('Payment Successful');
+                dispatch(clearCart());
             })
             .catch((error) => {
                 console.log('Payment error:', error);
@@ -51,7 +57,7 @@ const LegacyStripeCheckout = ({ price }) => {
                     label="Pay Now"
                     panelLabel="Pay"
                     name="CRWN Clothing Ltd."
-                    currency="gbp"
+                    currency="GBP"
                     billingAddress
                     shippingAddress
                     image="https://svgshare.com/i/CUz.svg"
